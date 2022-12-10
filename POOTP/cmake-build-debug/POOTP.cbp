@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="POOTP"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="POOTP">
+				<Option output="C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/POOTP.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 POOTP"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="POOTP/fast">
+				<Option output="C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/POOTP.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 POOTP/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Alimento.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Alimento.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Animal.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Animal.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Jogo.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Jogo.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Reserva.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Reserva.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Simulador.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Simulador.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Terminal.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Terminal.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/curses.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/main.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

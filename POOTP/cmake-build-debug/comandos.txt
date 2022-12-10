@@ -1,0 +1,7 @@
+animal a 1 6
+kill 12 2
+killid 1
+info 1
+n
+anim
+visanim
