@@ -1,6 +1,6 @@
 #include "Alimento.h"
 
-Alimento::Alimento(int nutri, int tox, int dur, string cheiro, int l, int c, int id):valornutritivo(nutri),toxicidade(tox),duracao(dur),cheiro(cheiro),poslinha(l),poscoluna(c), idAlimento(id) {}
+Alimento::Alimento(char t, int nutri, int tox, int dur, string cheiro, int l, int c, int id):tipo(t), valornutritivo(nutri),toxicidade(tox),duracao(dur),cheiro(cheiro),poslinha(l),poscoluna(c), idAlimento(id) {}
 
 Alimento::~Alimento() {}
 
@@ -10,18 +10,18 @@ string Alimento::getAsString() const {
     return os.str();
 }
 
-Relva::Relva(int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(nutri, tox, dur, cheiro, l, c, id) {
+Relva::Relva(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {
 
 }
 
-Cenoura::Cenoura(int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(nutri, tox, dur, cheiro, l, c, id) {
+Cenoura::Cenoura(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {
 
 }
 
-Corpo::Corpo(int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(nutri, tox, dur, cheiro, l, c, id) {
+Corpo::Corpo(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {
 
 }
 
-Bife::Bife(int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(nutri, tox, dur, cheiro, l, c, id) {
+Bife::Bife(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {
 
 }

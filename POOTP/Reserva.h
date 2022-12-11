@@ -26,8 +26,9 @@ public:
     string listAlimento(int id) const;
     int verificaLinhaColunaAnimal(int nl, int nc) const;
     int verificaLinhaColunaAlimento(int nl, int nc) const;
-    bool mataAnimal(int id) const;
-    bool removeAlimento(int id) const;
+    bool mataAnimal(int num) const;
+    bool removeAlimento(int num) const;
+    void alimentaAnimal(int num, int nutri, int toxi);
 private:
     int NL;
     int NC;

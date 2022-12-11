@@ -147,3 +147,15 @@ bool Reserva::removeAlimento(int num) const {
     }
     return false;
 }
+
+void Reserva::alimentaAnimal(int num, int nutri, int toxi) {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getId() == num){
+            //ALIMENTAR ANIMAL -> EM FALTA!!!
+            break;
+        }
+        else
+            ++it;
+    }
+}

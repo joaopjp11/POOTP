@@ -26,6 +26,8 @@ public:
     int getSCanguru() const{return SCanguru;}
     int getVCanguru() const{return VCanguru;}
     int getPCanguru() const{return PCanguru;}
+    int getVRelva() const{return VRelva;}
+    int getVBife() const{return VBife;}
     void setConstantes(istringstream &recebe);
 private:
     Reserva *reserva;
@@ -39,6 +41,8 @@ private:
     int SCanguru;
     int VCanguru;
     int PCanguru;
+    int VRelva;
+    int VBife;
 };
 
 
