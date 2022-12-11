@@ -95,3 +95,55 @@ string Reserva::listAlimento(int id) const {
     }
     return nullptr;
 }
+
+int Reserva::verificaLinhaColunaAnimal(int nl, int nc) const {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+
+            return it->getId();
+        }
+        else
+            ++it;
+    }
+    return 0;
+}
+
+int Reserva::verificaLinhaColunaAlimento(int nl, int nc) const {
+    auto i = this->alimentos.begin();
+    while(i != this->alimentos.end()){
+        if(i->getPosLinha() == nl && i->getPosColuna() == nc){
+
+            return i->getId();
+        }
+        else
+            ++i;
+    }
+    return 0;
+}
+
+bool Reserva::mataAnimal(int num) const {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getId() == num){
+            //MATAR ANIMAL -> EM FALTA!!!
+            return true;
+        }
+        else
+            ++it;
+    }
+    return false;
+}
+
+bool Reserva::removeAlimento(int num) const {
+    auto i = this->alimentos.begin();
+    while(i != this->alimentos.end()){
+        if(i->getId() == num){
+            //MATAR Alimento -> EM FALTA!!!
+            return true;
+        }
+        else
+            ++i;
+    }
+    return false;
+}

@@ -24,6 +24,10 @@ public:
     bool procuraIdAlimento(int id) const;
     string listAnimal(int id) const;
     string listAlimento(int id) const;
+    int verificaLinhaColunaAnimal(int nl, int nc) const;
+    int verificaLinhaColunaAlimento(int nl, int nc) const;
+    bool mataAnimal(int id) const;
+    bool removeAlimento(int id) const;
 private:
     int NL;
     int NC;

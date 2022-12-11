@@ -18,21 +18,20 @@ void Simulador::comecaSimulador() {
     Jogo jogo(&reserva);
     config(jogo,"constantes.txt");
 
-    Terminal &t = Terminal::instance();
+    //Terminal &t = Terminal::instance();
 
-    Window ViewReserva = Window(0, 0, 60, 24, true);
-    Window Comando = Window(0, 24, 60, 4, true);
-    Window Detalhes = Window(65, 0, 50, 24, true);
-    Window StatusComandos = Window(65, 24, 50, 6, true);
+    //Window ViewReserva = Window(0, 0, 60, 24, true);
+    //Window Comando = Window(0, 24, 60, 4, true);
+    //Window Detalhes = Window(65, 0, 50, 24, true);
+    //Window StatusComandos = Window(65, 24, 50, 6, true);
 
     mostraReservaInicial(jogo);
 
-    //Comando << "Comando(help):";
     do{
-        Comando << "\nComando(help):";
-        Comando >> comando;
-        //cout << "\nComando(help):";
-        //getline(cin,comando);
+        //Comando << "\nComando(help):";
+        //Comando >> comando;
+        cout << "\nComando(help):";
+        getline(cin,comando);
         istringstream iss(comando);
         validaComando(jogo, iss);
 
@@ -75,6 +74,7 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
     int num;
     int pausa;
     char especie;
+    int massa;
     string tipo;
     string ficheiro;
     string nome;
@@ -121,16 +121,53 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
             if(recebe.fail()){
                 linha = rand() % jogo.getReserva()->getLinhas() + 1;
                 coluna = rand() % jogo.getReserva()->getColunas() + 1;
-                Animal tmp(10,0,20,"maria",especie,linha,coluna,jogo.getReserva()->newId());
-                jogo.getReserva()->AddAnimal(tmp);
-                cout << "\nCria animal em posicao aleatoria!";
+
+                if(especie == 'c'){
+                    massa = rand() % 4+1;
+                    Coelho tmp(massa,0,jogo.getSCoelho(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    jogo.getReserva()->AddAnimal(tmp);
+                    cout << "\nCria coelho em posicao aleatoria!";
+                } else if (especie == 'o'){
+                    massa = rand() % 5 + 4;
+                    Ovelha tmp(massa,0,jogo.getSOvelha(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    jogo.getReserva()->AddAnimal(tmp);
+                    cout << "\nCria ovelha em posicao aleatoria!";
+                } else if (especie == 'l'){
+                    Lobo tmp(jogo.getPLobo(),0,jogo.getSLobo(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    jogo.getReserva()->AddAnimal(tmp);
+                    cout << "\nCria lobo em posicao aleatoria!";
+                } else if (especie == 'g'){
+                    Canguru tmp(jogo.getPCanguru(),0,jogo.getSCanguru(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    jogo.getReserva()->AddAnimal(tmp);
+                    cout << "\nCria canguru em posicao aleatoria!";
+                } else {
+                    cout << "\nImpossivel criar animal da especie: " << especie << endl;
+                }
             }else{
                 if(linha > jogo.getReserva()->getLinhas() || linha <= 0 || coluna <= 0 || coluna > jogo.getReserva()->getColunas())
                     cout << "\nFora da dimensao da reserva!";
                 else{
-                    Animal tmp(10,0,20,"maria",especie,linha,coluna,jogo.getReserva()->newId());
-                    jogo.getReserva()->AddAnimal(tmp);
-                    cout << "\nCria animal na linha:" << linha << " coluna:" << coluna;
+                    if(especie == 'c'){
+                        massa = rand() % 4+1;
+                        Coelho tmp(massa,0,jogo.getSCoelho(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAnimal(tmp);
+                        cout << "\nCria coelho na linha:" << linha << " coluna:" << coluna;
+                    } else if (especie == 'o'){
+                        massa = rand() % 5 + 4;
+                        Ovelha tmp(massa,0,jogo.getSOvelha(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAnimal(tmp);
+                        cout << "\nCria ovelha na linha:" << linha << " coluna:" << coluna;
+                    } else if (especie == 'l'){
+                        Lobo tmp(jogo.getPLobo(),0,jogo.getSLobo(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAnimal(tmp);
+                        cout << "\nCria lobo na linha:" << linha << " coluna:" << coluna;
+                    } else if (especie == 'g'){
+                        Canguru tmp(jogo.getPCanguru(),0,jogo.getSCanguru(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAnimal(tmp);
+                        cout << "\nCria canguru na linha:" << linha << " coluna:" << coluna;
+                    } else {
+                        cout << "\nImpossivel criar animal da especie: " << especie << endl;
+                    }
                 }
             }
         }
@@ -142,16 +179,24 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
         }else{
             if(linha > jogo.getReserva()->getLinhas() || linha <= 0 || coluna <= 0 || coluna > jogo.getReserva()->getColunas())
                 cout << "\nFora da dimensao da reserva!";
-            else
-                cout << "\nComando valido!";
+            else{
+                if(jogo.getReserva()->verificaLinhaColunaAnimal(linha,coluna) == 0)
+                    cout << "\nPosicao sem animais";
+                else{
+                    jogo.getReserva()->mataAnimal(jogo.getReserva()->verificaLinhaColunaAnimal(linha,coluna));
+                    cout << "\nAnimal morto!";
+                }
+            }
         }
     }else if(com == "killid"){
         recebe >> id;
         if(recebe.fail()){
             cout << "\nComando invalido!";
         }else{
-            if(jogo.getReserva()->procuraIdAnimal(id))
-                cout << "\nComando valido!";
+            if(jogo.getReserva()->procuraIdAnimal(id)){
+                jogo.getReserva()->mataAnimal(id);
+                cout << "\nAnimal morto!";
+            }
             else
                 cout << "\nNao existem animais com esse id!";
         }

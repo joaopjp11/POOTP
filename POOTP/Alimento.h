@@ -34,22 +34,22 @@ private:
 
 class Relva : public Alimento{
 public:
-
+    Relva(int nutri, int tox, int dur, string cheiro, int l, int c, int id);
 };
 
 class Cenoura : public Alimento{
 public:
-
+    Cenoura(int nutri, int tox, int dur, string cheiro, int l, int c, int id);
 };
 
 class Corpo : public Alimento{
 public:
-
+    Corpo(int nutri, int tox, int dur, string cheiro, int l, int c, int id);
 };
 
 class Bife : public Alimento{
 public:
-
+    Bife(int nutri, int tox, int dur, string cheiro, int l, int c, int id);
 };
 
 class Misterio : public Alimento{
