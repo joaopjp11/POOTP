@@ -15,6 +15,26 @@ void Reserva::AddAlimento(const Alimento &a) {
     cout << "Alimento adicionado com sucesso!" << endl;
 }
 
+void Reserva::eliminaAnimal(int num) {
+    auto i = this->animais.begin();
+    while(i != this->animais.end()){
+        if(i->getId() == num)
+            this->animais.erase(i);
+        else
+            ++i;
+    }
+}
+
+void Reserva::eliminaAlimento(int num) {
+    auto i = this->alimentos.begin();
+    while(i != this->alimentos.end()){
+        if(i->getId() == num)
+            this->alimentos.erase(i);
+        else
+            ++i;
+    }
+}
+
 string Reserva::getAsString() const {
     ostringstream buffer;
     if(animais.empty())
@@ -122,17 +142,30 @@ int Reserva::verificaLinhaColunaAlimento(int nl, int nc) const {
     return 0;
 }
 
-bool Reserva::mataAnimal(int num) const {
+void Reserva::mataAnimal(int num) const {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if(it->getId() == num){
             //MATAR ANIMAL -> EM FALTA!!!
-            return true;
+            cout << "\nMORTO!";
+            ++it;
         }
         else
             ++it;
     }
-    return false;
+}
+
+void Reserva::mataAnimal(int nl, int nc) const {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+            //MATAR ANIMAL -> EM FALTA!!!
+            cout << "\nMORTO!";
+            ++it;
+        }
+        else
+            ++it;
+    }
 }
 
 bool Reserva::removeAlimento(int num) const {
@@ -153,9 +186,57 @@ void Reserva::alimentaAnimal(int num, int nutri, int toxi) {
     while(it != this->animais.end()){
         if(it->getId() == num){
             //ALIMENTAR ANIMAL -> EM FALTA!!!
-            break;
+            cout << "\nALIMENTADO!";
+            ++it;
         }
         else
             ++it;
+    }
+}
+
+void Reserva::alimentaAnimal(int nl, int nc, int nutri, int toxi) {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+            //ALIMENTAR ANIMAL -> EM FALTA!!!
+            cout << "\nALIMENTADO!";
+            ++it;
+        }
+        else
+            ++it;
+    }
+}
+
+void Reserva::listPosicao(int nl, int nc) const {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+            cout << it->getAsString() << endl;
+            ++it;
+        }
+        else
+            ++it;
+    }
+
+    auto i = this->alimentos.begin();
+    while(i != this->alimentos.end()){
+        if(i->getPosLinha() == nl && i->getPosColuna() == nc){
+            cout << i->getAsString() << endl;
+            ++i;
+        }
+        else
+            ++i;
+    }
+}
+
+void Reserva::ComandoAnim() const {
+    if(animais.empty())
+        cout << "Sem animais!\n";
+    else {
+        auto it = this->animais.begin();
+        while (it != this->animais.end()) {
+            cout << "\nId: " << it->getId() << " Especie: " << it->getEspecie() << " Saude: " << it->getSaude();
+            ++it;
+        }
     }
 }

@@ -183,9 +183,9 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
                 if(jogo.getReserva()->verificaLinhaColunaAnimal(linha,coluna) == 0)
                     cout << "\nPosicao sem animais";
                 else{
-                    jogo.getReserva()->mataAnimal(jogo.getReserva()->verificaLinhaColunaAnimal(linha,coluna));
+                    jogo.getReserva()->mataAnimal(linha,coluna);
                     //FALTA DEFINIR A FUNÇÃO PARA MATAR ANIMAL
-                    cout << "\nAnimal morto!";
+                    cout << "\nAnimais mortos!";
                 }
             }
         }
@@ -211,51 +211,59 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
             if(recebe.fail()){
                 linha = rand() % jogo.getReserva()->getLinhas() + 1;
                 coluna = rand() % jogo.getReserva()->getColunas() + 1;
-                if(tipo == 'r'){
-                    //string cheiro[2] = {"erva","verdura"};
-                    Relva tmp(tipo, 3, 0, jogo.getVRelva(), "teste", linha, coluna, jogo.getReserva()->newId());
-                    jogo.getReserva()->AddAlimento(tmp);
-                    cout << "\nColocar relva em posicao aleatoria!";
-                } else if(tipo == 't'){
-                    Cenoura tmp(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
-                    jogo.getReserva()->AddAlimento(tmp);
-                    cout << "\nColocar cenoura em posicao aleatoria!";
-                } else if(tipo == 'p'){
-                    Corpo tmp(tipo, 4, 0, 1000, "carne", linha, coluna, jogo.getReserva()->newId());
-                    jogo.getReserva()->AddAlimento(tmp);
-                    cout << "\nColocar corpo em posicao aleatoria!";
-                } else if(tipo == 'b'){
-                    Bife tmp(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
-                    jogo.getReserva()->AddAlimento(tmp);
-                    cout << "\nColocar bife em posicao aleatoria!";
-                } else {
-                    cout << "\nImpossivel criar alimento do tipo: " << tipo << endl;
+                if(jogo.getReserva()->verificaLinhaColunaAlimento(linha,coluna) == 0) {
+                    if (tipo == 'r') {
+                        //string cheiro[2] = {"erva","verdura"};
+                        Relva tmp(tipo, 3, 0, jogo.getVRelva(), "teste", linha, coluna, jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAlimento(tmp);
+                        cout << "\nColocar relva em posicao aleatoria!";
+                    } else if (tipo == 't') {
+                        Cenoura tmp(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAlimento(tmp);
+                        cout << "\nColocar cenoura em posicao aleatoria!";
+                    } else if (tipo == 'p') {
+                        Corpo tmp(tipo, 4, 0, 1000, "carne", linha, coluna, jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAlimento(tmp);
+                        cout << "\nColocar corpo em posicao aleatoria!";
+                    } else if (tipo == 'b') {
+                        Bife tmp(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAlimento(tmp);
+                        cout << "\nColocar bife em posicao aleatoria!";
+                    } else {
+                        cout << "\nImpossivel criar alimento do tipo: " << tipo << endl;
+                    }
                 }
+                else
+                    cout << "\nPosicao ja tem um alimento";
             }else{
                 if(linha > jogo.getReserva()->getLinhas() || linha <= 0 || coluna <= 0 || coluna > jogo.getReserva()->getColunas())
                     cout << "\nFora da dimensao da reserva!";
                 else{
-                    if(tipo == 'r'){
-                        //string cheiro[2] = {"erva","verdura"};
-                        Relva tmp(tipo, 3, 0, jogo.getVRelva(), "teste", linha, coluna, jogo.getReserva()->newId());
-                        jogo.getReserva()->AddAlimento(tmp);
-                        cout << "\nColocar relva na linha:" << linha << " coluna:" << coluna;
-                    } else if(tipo == 't'){
-                        Cenoura tmp(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
-                        jogo.getReserva()->AddAlimento(tmp);
-                        cout << "\nColocar cenoura na linha:" << linha << " coluna:" << coluna;
-                    } else if(tipo == 'p'){
-                        Corpo tmp(tipo, 4, 0, 1000, "carne", linha, coluna, jogo.getReserva()->newId());
-                        jogo.getReserva()->AddAlimento(tmp);
-                        cout << "\nColocar corpo na linha:" << linha << " coluna:" << coluna;
-                    } else if(tipo == 'b'){
-                        //string cheiro[2] = {"carne","ketchup"};
-                        Bife tmp(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
-                        jogo.getReserva()->AddAlimento(tmp);
-                        cout << "\nColocar bife na linha:" << linha << " coluna:" << coluna;
-                    } else {
-                        cout << "\nImpossivel criar alimento do tipo: " << tipo << endl;
+                    if(jogo.getReserva()->verificaLinhaColunaAlimento(linha,coluna) == 0) {
+                        if (tipo == 'r') {
+                            //string cheiro[2] = {"erva","verdura"};
+                            Relva tmp(tipo, 3, 0, jogo.getVRelva(), "teste", linha, coluna, jogo.getReserva()->newId());
+                            jogo.getReserva()->AddAlimento(tmp);
+                            cout << "\nColocar relva na linha:" << linha << " coluna:" << coluna;
+                        } else if (tipo == 't') {
+                            Cenoura tmp(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
+                            jogo.getReserva()->AddAlimento(tmp);
+                            cout << "\nColocar cenoura na linha:" << linha << " coluna:" << coluna;
+                        } else if (tipo == 'p') {
+                            Corpo tmp(tipo, 4, 0, 1000, "carne", linha, coluna, jogo.getReserva()->newId());
+                            jogo.getReserva()->AddAlimento(tmp);
+                            cout << "\nColocar corpo na linha:" << linha << " coluna:" << coluna;
+                        } else if (tipo == 'b') {
+                            //string cheiro[2] = {"carne","ketchup"};
+                            Bife tmp(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
+                            jogo.getReserva()->AddAlimento(tmp);
+                            cout << "\nColocar bife na linha:" << linha << " coluna:" << coluna;
+                        } else {
+                            cout << "\nImpossivel criar alimento do tipo: " << tipo << endl;
+                        }
                     }
+                    else
+                        cout << "\nPosicao ja tem um alimento";
                 }
             }
         }
@@ -268,10 +276,9 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
             if(linha > jogo.getReserva()->getLinhas() || linha <= 0 || coluna <= 0 || coluna > jogo.getReserva()->getColunas())
                 cout << "\nlinha ou coluna invalida!";
             else{
-                int num = jogo.getReserva()->verificaLinhaColunaAnimal(linha,coluna);
-                if( num != 0){
-                    jogo.getReserva()->alimentaAnimal(num, nutri, toxi);
-                    cout << "\nAnimal alimentado!";
+                if( jogo.getReserva()->verificaLinhaColunaAnimal(linha,coluna) != 0){
+                    jogo.getReserva()->alimentaAnimal(linha,coluna, nutri, toxi);
+                    cout << "\nAnimais alimentados!";
                 } else{
                     cout << "\nPosicao vazia!";
                 }
@@ -323,8 +330,24 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
         }else{
             if(linha > jogo.getReserva()->getLinhas() || linha <= 0 || coluna <= 0 || coluna > jogo.getReserva()->getColunas())
                 cout << "\nFora da dimensao da reserva!";
-            else
-                cout << "\nComando valido!";
+            else {
+                if(jogo.getReserva()->verificaLinhaColunaAnimal(linha, coluna) == 0 && jogo.getReserva()->verificaLinhaColunaAlimento(linha, coluna) == 0){
+                    cout << "\nPosicao vazia!";
+                }
+                else {
+                    int numAnimal = 0;
+                    do {
+                        numAnimal = jogo.getReserva()->verificaLinhaColunaAnimal(linha, coluna);
+                        jogo.getReserva()->eliminaAnimal(numAnimal);
+                    }while (jogo.getReserva()->verificaLinhaColunaAnimal(linha, coluna) != 0);
+
+                    int numAlimento = jogo.getReserva()->verificaLinhaColunaAlimento(linha, coluna);
+                    if (numAlimento != 0) {
+                        jogo.getReserva()->eliminaAlimento(numAlimento);
+                    }
+                    cout << "\nPosicao (" << linha << "," << coluna << ") foi limpa!";
+                }
+            }
         }
     }else if(com == "see"){
         recebe >> linha >> coluna;
@@ -334,7 +357,10 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
             if(linha > jogo.getReserva()->getLinhas() || linha <= 0 || coluna <= 0 || coluna > jogo.getReserva()->getColunas())
                 cout << "\nFora da dimensao da reserva!";
             else{
-                cout << "\nComando valido!";
+                if(jogo.getReserva()->verificaLinhaColunaAnimal(linha, coluna) == 0 && jogo.getReserva()->verificaLinhaColunaAlimento(linha, coluna) == 0){
+                    cout << "\nPosicao vazia!";
+                }
+                jogo.getReserva()->listPosicao(linha,coluna);
             }
         }
     }else if(com == "info"){
@@ -366,7 +392,7 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
         }
 
     }else if(com == "anim"){
-        cout << "\nComando valido!";
+        jogo.getReserva()->ComandoAnim();
 
     }else if(com == "visanim"){
         cout << "\nComando valido!";

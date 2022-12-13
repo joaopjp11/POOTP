@@ -18,6 +18,8 @@ public:
     int getColunas() const{return NC;}
     void AddAnimal(const Animal &a);
     void AddAlimento(const Alimento &a);
+    void eliminaAnimal(int num);
+    void eliminaAlimento(int num);
     string getAsString() const;
     int newId();
     bool procuraIdAnimal(int id) const;
@@ -26,9 +28,13 @@ public:
     string listAlimento(int id) const;
     int verificaLinhaColunaAnimal(int nl, int nc) const;
     int verificaLinhaColunaAlimento(int nl, int nc) const;
-    bool mataAnimal(int num) const;
+    void mataAnimal(int num) const;
+    void mataAnimal(int nl, int nc) const;
     bool removeAlimento(int num) const;
     void alimentaAnimal(int num, int nutri, int toxi);
+    void alimentaAnimal(int nl, int nc, int nutri, int toxi);
+    void listPosicao(int nl, int nc)const;
+    void ComandoAnim() const;
 private:
     int NL;
     int NC;
