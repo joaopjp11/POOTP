@@ -92,10 +92,58 @@
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Animal.h">
 			<Option target="POOTP"/>
 		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Bife.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Bife.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Canguru.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Canguru.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Cenoura.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Cenoura.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Coelho.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Coelho.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Corpo.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Corpo.h">
+			<Option target="POOTP"/>
+		</Unit>
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Jogo.cpp">
 			<Option target="POOTP"/>
 		</Unit>
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Jogo.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Lobo.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Lobo.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Ovelha.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Ovelha.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Relva.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Relva.h">
 			<Option target="POOTP"/>
 		</Unit>
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Reserva.cpp">

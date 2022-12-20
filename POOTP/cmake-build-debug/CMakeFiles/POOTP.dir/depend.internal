@@ -8,21 +8,67 @@ CMakeFiles/POOTP.dir/Animal.cpp.obj
  C:/Users/joaop/CLionProjects/POOTP/Alimento.h
  C:/Users/joaop/CLionProjects/POOTP/Animal.cpp
  C:/Users/joaop/CLionProjects/POOTP/Animal.h
+CMakeFiles/POOTP.dir/Bife.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Bife.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Bife.h
+CMakeFiles/POOTP.dir/Canguru.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Canguru.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Canguru.h
+CMakeFiles/POOTP.dir/Cenoura.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Cenoura.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Cenoura.h
+CMakeFiles/POOTP.dir/Coelho.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Coelho.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Coelho.h
+CMakeFiles/POOTP.dir/Corpo.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Corpo.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Corpo.h
 CMakeFiles/POOTP.dir/Jogo.cpp.obj
  C:/Users/joaop/CLionProjects/POOTP/Alimento.h
  C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Corpo.h
  C:/Users/joaop/CLionProjects/POOTP/Jogo.cpp
  C:/Users/joaop/CLionProjects/POOTP/Jogo.h
  C:/Users/joaop/CLionProjects/POOTP/Reserva.h
+CMakeFiles/POOTP.dir/Lobo.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Lobo.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Lobo.h
+CMakeFiles/POOTP.dir/Ovelha.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Ovelha.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Ovelha.h
+CMakeFiles/POOTP.dir/Relva.cpp.obj
+ C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+ C:/Users/joaop/CLionProjects/POOTP/Relva.cpp
+ C:/Users/joaop/CLionProjects/POOTP/Relva.h
 CMakeFiles/POOTP.dir/Reserva.cpp.obj
  C:/Users/joaop/CLionProjects/POOTP/Alimento.h
  C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Corpo.h
  C:/Users/joaop/CLionProjects/POOTP/Reserva.cpp
  C:/Users/joaop/CLionProjects/POOTP/Reserva.h
 CMakeFiles/POOTP.dir/Simulador.cpp.obj
  C:/Users/joaop/CLionProjects/POOTP/Alimento.h
  C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Bife.h
+ C:/Users/joaop/CLionProjects/POOTP/Canguru.h
+ C:/Users/joaop/CLionProjects/POOTP/Cenoura.h
+ C:/Users/joaop/CLionProjects/POOTP/Coelho.h
+ C:/Users/joaop/CLionProjects/POOTP/Corpo.h
  C:/Users/joaop/CLionProjects/POOTP/Jogo.h
+ C:/Users/joaop/CLionProjects/POOTP/Lobo.h
+ C:/Users/joaop/CLionProjects/POOTP/Ovelha.h
+ C:/Users/joaop/CLionProjects/POOTP/Relva.h
  C:/Users/joaop/CLionProjects/POOTP/Reserva.h
  C:/Users/joaop/CLionProjects/POOTP/Simulador.cpp
  C:/Users/joaop/CLionProjects/POOTP/Simulador.h
@@ -35,7 +81,15 @@ CMakeFiles/POOTP.dir/Terminal.cpp.obj
 CMakeFiles/POOTP.dir/main.cpp.obj
  C:/Users/joaop/CLionProjects/POOTP/Alimento.h
  C:/Users/joaop/CLionProjects/POOTP/Animal.h
+ C:/Users/joaop/CLionProjects/POOTP/Bife.h
+ C:/Users/joaop/CLionProjects/POOTP/Canguru.h
+ C:/Users/joaop/CLionProjects/POOTP/Cenoura.h
+ C:/Users/joaop/CLionProjects/POOTP/Coelho.h
+ C:/Users/joaop/CLionProjects/POOTP/Corpo.h
  C:/Users/joaop/CLionProjects/POOTP/Jogo.h
+ C:/Users/joaop/CLionProjects/POOTP/Lobo.h
+ C:/Users/joaop/CLionProjects/POOTP/Ovelha.h
+ C:/Users/joaop/CLionProjects/POOTP/Relva.h
  C:/Users/joaop/CLionProjects/POOTP/Reserva.h
  C:/Users/joaop/CLionProjects/POOTP/Simulador.h
  C:/Users/joaop/CLionProjects/POOTP/Terminal.h

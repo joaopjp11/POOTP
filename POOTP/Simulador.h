@@ -6,6 +6,14 @@
 #include "Jogo.h"
 #include "Animal.h"
 #include "Alimento.h"
+#include "Coelho.h"
+#include "Ovelha.h"
+#include "Lobo.h"
+#include "Canguru.h"
+#include "Relva.h"
+#include "Cenoura.h"
+#include "Corpo.h"
+#include "Bife.h"
 
 
 #include <sstream>
@@ -22,9 +30,10 @@ using namespace term;
 class Simulador {
 public:
     static void comecaSimulador();
-    static void validaComando(Jogo &jogo, istringstream &recebe);
+    static void validaComando(Jogo &jogo, Store &jogos, istringstream &recebe);
     static void mostraReservaInicial(Jogo &jogo);
-    static bool leficheiro(Jogo &jogo,const string ficheiro);
+    static void mostraReserva(Jogo &jogo);
+    static bool leficheiro(Jogo &jogo, Store &jogos, const string ficheiro);
     static bool config(Jogo &jogo,const string ficheiro);
 };
 

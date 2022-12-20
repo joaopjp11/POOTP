@@ -7,12 +7,10 @@ Reserva::~Reserva() {}
 
 void Reserva::AddAnimal(const Animal &a) {
     this->animais.push_back(a);
-    cout << "Animal adicionado com sucesso!" << endl;
 }
 
 void Reserva::AddAlimento(const Alimento &a) {
     this->alimentos.push_back(a);
-    cout << "Alimento adicionado com sucesso!" << endl;
 }
 
 void Reserva::eliminaAnimal(int num) {
@@ -142,37 +140,37 @@ int Reserva::verificaLinhaColunaAlimento(int nl, int nc) const {
     return 0;
 }
 
-void Reserva::mataAnimal(int num) const {
+void Reserva::mataAnimal(int num){
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if(it->getId() == num){
-            //MATAR ANIMAL -> EM FALTA!!!
-            cout << "\nMORTO!";
-            ++it;
+            Corpo tmp('p', 7, 0, 1000, "carne", it->getPosLinha(), it->getPosColuna(), newId());
+            AddAlimento(tmp);
+            this->animais.erase(it);
         }
         else
             ++it;
     }
 }
 
-void Reserva::mataAnimal(int nl, int nc) const {
+void Reserva::mataAnimal(int nl, int nc) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if(it->getPosLinha() == nl && it->getPosColuna() == nc){
-            //MATAR ANIMAL -> EM FALTA!!!
-            cout << "\nMORTO!";
-            ++it;
+            Corpo tmp('p', 7, 0, 1000, "carne", nl, nc, newId());
+            AddAlimento(tmp);
+            this->animais.erase(it);
         }
         else
             ++it;
     }
 }
 
-bool Reserva::removeAlimento(int num) const {
+bool Reserva::removeAlimento(int num) {
     auto i = this->alimentos.begin();
     while(i != this->alimentos.end()){
         if(i->getId() == num){
-            //MATAR Alimento -> EM FALTA!!!
+            this->alimentos.erase(i);
             return true;
         }
         else
@@ -240,3 +238,50 @@ void Reserva::ComandoAnim() const {
         }
     }
 }
+
+char Reserva::especieAnimal(int nl, int nc) const{
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+            return it->getEspecie();
+        }
+        else
+            ++it;
+    }
+    return 0;
+}
+
+char Reserva::tipoAlimento(int nl, int nc) const {
+    auto it = this->alimentos.begin();
+    while(it != this->alimentos.end()){
+        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+
+            return it->getTipo();
+        }
+        else
+            ++it;
+    }
+    return 0;
+}
+
+void Reserva::movimentaAnimais() {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if(it->getEspecie() == 'c'){
+            it->movimentoCoelho(NL,NC);
+            ++it;
+        } else if(it->getEspecie() == 'o'){
+            it->movimentoOvelha(NL,NC);
+            ++it;
+        } else if(it->getEspecie() == 'l'){
+            it->movimentoLobo(NL,NC);
+            ++it;
+        } else if(it->getEspecie() == 'g'){
+            it->movimentoCanguru(NL,NC);
+            ++it;
+        }
+        else
+            ++it;
+    }
+}
+

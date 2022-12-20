@@ -176,6 +176,126 @@ Animal.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Animal.cpp.s
 .PHONY : Animal.cpp.s
 
+Bife.obj: Bife.cpp.obj
+.PHONY : Bife.obj
+
+# target to build an object file
+Bife.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Bife.cpp.obj
+.PHONY : Bife.cpp.obj
+
+Bife.i: Bife.cpp.i
+.PHONY : Bife.i
+
+# target to preprocess a source file
+Bife.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Bife.cpp.i
+.PHONY : Bife.cpp.i
+
+Bife.s: Bife.cpp.s
+.PHONY : Bife.s
+
+# target to generate assembly for a file
+Bife.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Bife.cpp.s
+.PHONY : Bife.cpp.s
+
+Canguru.obj: Canguru.cpp.obj
+.PHONY : Canguru.obj
+
+# target to build an object file
+Canguru.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Canguru.cpp.obj
+.PHONY : Canguru.cpp.obj
+
+Canguru.i: Canguru.cpp.i
+.PHONY : Canguru.i
+
+# target to preprocess a source file
+Canguru.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Canguru.cpp.i
+.PHONY : Canguru.cpp.i
+
+Canguru.s: Canguru.cpp.s
+.PHONY : Canguru.s
+
+# target to generate assembly for a file
+Canguru.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Canguru.cpp.s
+.PHONY : Canguru.cpp.s
+
+Cenoura.obj: Cenoura.cpp.obj
+.PHONY : Cenoura.obj
+
+# target to build an object file
+Cenoura.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Cenoura.cpp.obj
+.PHONY : Cenoura.cpp.obj
+
+Cenoura.i: Cenoura.cpp.i
+.PHONY : Cenoura.i
+
+# target to preprocess a source file
+Cenoura.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Cenoura.cpp.i
+.PHONY : Cenoura.cpp.i
+
+Cenoura.s: Cenoura.cpp.s
+.PHONY : Cenoura.s
+
+# target to generate assembly for a file
+Cenoura.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Cenoura.cpp.s
+.PHONY : Cenoura.cpp.s
+
+Coelho.obj: Coelho.cpp.obj
+.PHONY : Coelho.obj
+
+# target to build an object file
+Coelho.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Coelho.cpp.obj
+.PHONY : Coelho.cpp.obj
+
+Coelho.i: Coelho.cpp.i
+.PHONY : Coelho.i
+
+# target to preprocess a source file
+Coelho.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Coelho.cpp.i
+.PHONY : Coelho.cpp.i
+
+Coelho.s: Coelho.cpp.s
+.PHONY : Coelho.s
+
+# target to generate assembly for a file
+Coelho.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Coelho.cpp.s
+.PHONY : Coelho.cpp.s
+
+Corpo.obj: Corpo.cpp.obj
+.PHONY : Corpo.obj
+
+# target to build an object file
+Corpo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Corpo.cpp.obj
+.PHONY : Corpo.cpp.obj
+
+Corpo.i: Corpo.cpp.i
+.PHONY : Corpo.i
+
+# target to preprocess a source file
+Corpo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Corpo.cpp.i
+.PHONY : Corpo.cpp.i
+
+Corpo.s: Corpo.cpp.s
+.PHONY : Corpo.s
+
+# target to generate assembly for a file
+Corpo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Corpo.cpp.s
+.PHONY : Corpo.cpp.s
+
 Jogo.obj: Jogo.cpp.obj
 .PHONY : Jogo.obj
 
@@ -199,6 +319,78 @@ Jogo.s: Jogo.cpp.s
 Jogo.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Jogo.cpp.s
 .PHONY : Jogo.cpp.s
+
+Lobo.obj: Lobo.cpp.obj
+.PHONY : Lobo.obj
+
+# target to build an object file
+Lobo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Lobo.cpp.obj
+.PHONY : Lobo.cpp.obj
+
+Lobo.i: Lobo.cpp.i
+.PHONY : Lobo.i
+
+# target to preprocess a source file
+Lobo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Lobo.cpp.i
+.PHONY : Lobo.cpp.i
+
+Lobo.s: Lobo.cpp.s
+.PHONY : Lobo.s
+
+# target to generate assembly for a file
+Lobo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Lobo.cpp.s
+.PHONY : Lobo.cpp.s
+
+Ovelha.obj: Ovelha.cpp.obj
+.PHONY : Ovelha.obj
+
+# target to build an object file
+Ovelha.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Ovelha.cpp.obj
+.PHONY : Ovelha.cpp.obj
+
+Ovelha.i: Ovelha.cpp.i
+.PHONY : Ovelha.i
+
+# target to preprocess a source file
+Ovelha.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Ovelha.cpp.i
+.PHONY : Ovelha.cpp.i
+
+Ovelha.s: Ovelha.cpp.s
+.PHONY : Ovelha.s
+
+# target to generate assembly for a file
+Ovelha.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Ovelha.cpp.s
+.PHONY : Ovelha.cpp.s
+
+Relva.obj: Relva.cpp.obj
+.PHONY : Relva.obj
+
+# target to build an object file
+Relva.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Relva.cpp.obj
+.PHONY : Relva.cpp.obj
+
+Relva.i: Relva.cpp.i
+.PHONY : Relva.i
+
+# target to preprocess a source file
+Relva.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Relva.cpp.i
+.PHONY : Relva.cpp.i
+
+Relva.s: Relva.cpp.s
+.PHONY : Relva.s
+
+# target to generate assembly for a file
+Relva.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Relva.cpp.s
+.PHONY : Relva.cpp.s
 
 Reserva.obj: Reserva.cpp.obj
 .PHONY : Reserva.obj
@@ -311,9 +503,33 @@ help:
 	@echo ... Animal.obj
 	@echo ... Animal.i
 	@echo ... Animal.s
+	@echo ... Bife.obj
+	@echo ... Bife.i
+	@echo ... Bife.s
+	@echo ... Canguru.obj
+	@echo ... Canguru.i
+	@echo ... Canguru.s
+	@echo ... Cenoura.obj
+	@echo ... Cenoura.i
+	@echo ... Cenoura.s
+	@echo ... Coelho.obj
+	@echo ... Coelho.i
+	@echo ... Coelho.s
+	@echo ... Corpo.obj
+	@echo ... Corpo.i
+	@echo ... Corpo.s
 	@echo ... Jogo.obj
 	@echo ... Jogo.i
 	@echo ... Jogo.s
+	@echo ... Lobo.obj
+	@echo ... Lobo.i
+	@echo ... Lobo.s
+	@echo ... Ovelha.obj
+	@echo ... Ovelha.i
+	@echo ... Ovelha.s
+	@echo ... Relva.obj
+	@echo ... Relva.i
+	@echo ... Relva.s
 	@echo ... Reserva.obj
 	@echo ... Reserva.i
 	@echo ... Reserva.s

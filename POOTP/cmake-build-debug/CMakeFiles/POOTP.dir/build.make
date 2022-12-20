@@ -156,6 +156,110 @@ CMakeFiles/POOTP.dir/Terminal.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Terminal.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Terminal.cpp -o CMakeFiles\POOTP.dir\Terminal.cpp.s
 
+CMakeFiles/POOTP.dir/Coelho.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Coelho.cpp.obj: ../Coelho.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/POOTP.dir/Coelho.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Coelho.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Coelho.cpp
+
+CMakeFiles/POOTP.dir/Coelho.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Coelho.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Coelho.cpp > CMakeFiles\POOTP.dir\Coelho.cpp.i
+
+CMakeFiles/POOTP.dir/Coelho.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Coelho.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Coelho.cpp -o CMakeFiles\POOTP.dir\Coelho.cpp.s
+
+CMakeFiles/POOTP.dir/Ovelha.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Ovelha.cpp.obj: ../Ovelha.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/POOTP.dir/Ovelha.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Ovelha.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Ovelha.cpp
+
+CMakeFiles/POOTP.dir/Ovelha.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Ovelha.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Ovelha.cpp > CMakeFiles\POOTP.dir\Ovelha.cpp.i
+
+CMakeFiles/POOTP.dir/Ovelha.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Ovelha.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Ovelha.cpp -o CMakeFiles\POOTP.dir\Ovelha.cpp.s
+
+CMakeFiles/POOTP.dir/Lobo.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Lobo.cpp.obj: ../Lobo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/POOTP.dir/Lobo.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Lobo.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Lobo.cpp
+
+CMakeFiles/POOTP.dir/Lobo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Lobo.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Lobo.cpp > CMakeFiles\POOTP.dir\Lobo.cpp.i
+
+CMakeFiles/POOTP.dir/Lobo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Lobo.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Lobo.cpp -o CMakeFiles\POOTP.dir\Lobo.cpp.s
+
+CMakeFiles/POOTP.dir/Canguru.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Canguru.cpp.obj: ../Canguru.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/POOTP.dir/Canguru.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Canguru.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Canguru.cpp
+
+CMakeFiles/POOTP.dir/Canguru.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Canguru.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Canguru.cpp > CMakeFiles\POOTP.dir\Canguru.cpp.i
+
+CMakeFiles/POOTP.dir/Canguru.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Canguru.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Canguru.cpp -o CMakeFiles\POOTP.dir\Canguru.cpp.s
+
+CMakeFiles/POOTP.dir/Relva.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Relva.cpp.obj: ../Relva.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/POOTP.dir/Relva.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Relva.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Relva.cpp
+
+CMakeFiles/POOTP.dir/Relva.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Relva.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Relva.cpp > CMakeFiles\POOTP.dir\Relva.cpp.i
+
+CMakeFiles/POOTP.dir/Relva.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Relva.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Relva.cpp -o CMakeFiles\POOTP.dir\Relva.cpp.s
+
+CMakeFiles/POOTP.dir/Cenoura.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Cenoura.cpp.obj: ../Cenoura.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/POOTP.dir/Cenoura.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Cenoura.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Cenoura.cpp
+
+CMakeFiles/POOTP.dir/Cenoura.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Cenoura.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Cenoura.cpp > CMakeFiles\POOTP.dir\Cenoura.cpp.i
+
+CMakeFiles/POOTP.dir/Cenoura.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Cenoura.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Cenoura.cpp -o CMakeFiles\POOTP.dir\Cenoura.cpp.s
+
+CMakeFiles/POOTP.dir/Corpo.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Corpo.cpp.obj: ../Corpo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/POOTP.dir/Corpo.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Corpo.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Corpo.cpp
+
+CMakeFiles/POOTP.dir/Corpo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Corpo.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Corpo.cpp > CMakeFiles\POOTP.dir\Corpo.cpp.i
+
+CMakeFiles/POOTP.dir/Corpo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Corpo.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Corpo.cpp -o CMakeFiles\POOTP.dir\Corpo.cpp.s
+
+CMakeFiles/POOTP.dir/Bife.cpp.obj: CMakeFiles/POOTP.dir/flags.make
+CMakeFiles/POOTP.dir/Bife.cpp.obj: ../Bife.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/POOTP.dir/Bife.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POOTP.dir\Bife.cpp.obj -c C:\Users\joaop\CLionProjects\POOTP\Bife.cpp
+
+CMakeFiles/POOTP.dir/Bife.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POOTP.dir/Bife.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\joaop\CLionProjects\POOTP\Bife.cpp > CMakeFiles\POOTP.dir\Bife.cpp.i
+
+CMakeFiles/POOTP.dir/Bife.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POOTP.dir/Bife.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\joaop\CLionProjects\POOTP\Bife.cpp -o CMakeFiles\POOTP.dir\Bife.cpp.s
+
 # Object files for target POOTP
 POOTP_OBJECTS = \
 "CMakeFiles/POOTP.dir/main.cpp.obj" \
@@ -164,7 +268,15 @@ POOTP_OBJECTS = \
 "CMakeFiles/POOTP.dir/Jogo.cpp.obj" \
 "CMakeFiles/POOTP.dir/Animal.cpp.obj" \
 "CMakeFiles/POOTP.dir/Alimento.cpp.obj" \
-"CMakeFiles/POOTP.dir/Terminal.cpp.obj"
+"CMakeFiles/POOTP.dir/Terminal.cpp.obj" \
+"CMakeFiles/POOTP.dir/Coelho.cpp.obj" \
+"CMakeFiles/POOTP.dir/Ovelha.cpp.obj" \
+"CMakeFiles/POOTP.dir/Lobo.cpp.obj" \
+"CMakeFiles/POOTP.dir/Canguru.cpp.obj" \
+"CMakeFiles/POOTP.dir/Relva.cpp.obj" \
+"CMakeFiles/POOTP.dir/Cenoura.cpp.obj" \
+"CMakeFiles/POOTP.dir/Corpo.cpp.obj" \
+"CMakeFiles/POOTP.dir/Bife.cpp.obj"
 
 # External object files for target POOTP
 POOTP_EXTERNAL_OBJECTS =
@@ -176,12 +288,20 @@ POOTP.exe: CMakeFiles/POOTP.dir/Jogo.cpp.obj
 POOTP.exe: CMakeFiles/POOTP.dir/Animal.cpp.obj
 POOTP.exe: CMakeFiles/POOTP.dir/Alimento.cpp.obj
 POOTP.exe: CMakeFiles/POOTP.dir/Terminal.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Coelho.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Ovelha.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Lobo.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Canguru.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Relva.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Cenoura.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Corpo.cpp.obj
+POOTP.exe: CMakeFiles/POOTP.dir/Bife.cpp.obj
 POOTP.exe: CMakeFiles/POOTP.dir/build.make
 POOTP.exe: C:/PDCurses-3.9/wincon/pdcurses.a
 POOTP.exe: CMakeFiles/POOTP.dir/linklibs.rsp
 POOTP.exe: CMakeFiles/POOTP.dir/objects1.rsp
 POOTP.exe: CMakeFiles/POOTP.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable POOTP.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\joaop\CLionProjects\POOTP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable POOTP.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\POOTP.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

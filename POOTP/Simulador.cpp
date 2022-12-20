@@ -16,6 +16,7 @@ void Simulador::comecaSimulador() {
 
     Reserva reserva(nl,nc);
     Jogo jogo(&reserva);
+    Store jogos;
     config(jogo,"constantes.txt");
 
     //Terminal &t = Terminal::instance();
@@ -33,7 +34,7 @@ void Simulador::comecaSimulador() {
         cout << "\nComando(help):";
         getline(cin,comando);
         istringstream iss(comando);
-        validaComando(jogo, iss);
+        validaComando(jogo, jogos, iss);
 
     }while(comando != "exit");
 }
@@ -57,7 +58,7 @@ void Simulador::mostraReservaInicial(Jogo &jogo) {
             }
         }
         else {
-            for(j=0;j<colunas;j++){
+            for(j=1;j<colunas+1;j++){
                 cout << " ";
             }
         }
@@ -65,7 +66,41 @@ void Simulador::mostraReservaInicial(Jogo &jogo) {
     }
 }
 
-void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
+void Simulador::mostraReserva(Jogo &jogo) {
+    int linhas = jogo.getReserva()->getLinhas();
+    int colunas = jogo.getReserva()->getColunas();
+    int i = 0;
+    int j = 0;
+
+    for(i=0;i<linhas+2;i++){
+        cout << "|";
+        if(i == 0){
+            for(j=0;j<colunas;j++){
+                cout << "|";
+            }
+        }
+        else if(i == linhas+1){
+            for(j=0;j<colunas;j++){
+                cout << "|";
+            }
+        }
+        else {
+            for(j=1;j<colunas+1;j++){
+                if(jogo.getReserva()->verificaLinhaColunaAnimal(i,j))
+                    cout << jogo.getReserva()->especieAnimal(i,j);
+
+                if(jogo.getReserva()->verificaLinhaColunaAlimento(i,j))
+                    cout << jogo.getReserva()->tipoAlimento(i,j);
+
+                if(!jogo.getReserva()->verificaLinhaColunaAnimal(i,j) && !jogo.getReserva()->verificaLinhaColunaAlimento(i,j))
+                    cout << " ";
+            }
+        }
+        cout << "|" << endl;
+    }
+}
+
+void Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe) {
     int linha;
     int coluna;
     int id;
@@ -124,20 +159,20 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
 
                 if(especie == 'c'){
                     massa = rand() % 4+1;
-                    Coelho tmp(massa,0,jogo.getSCoelho(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    Coelho tmp(massa,0,jogo.getSCoelho(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCoelho());
                     jogo.getReserva()->AddAnimal(tmp);
                     cout << "\nCria coelho em posicao aleatoria!";
                 } else if (especie == 'o'){
                     massa = rand() % 5 + 4;
-                    Ovelha tmp(massa,0,jogo.getSOvelha(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    Ovelha tmp(massa,0,jogo.getSOvelha(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVOvelha());
                     jogo.getReserva()->AddAnimal(tmp);
                     cout << "\nCria ovelha em posicao aleatoria!";
                 } else if (especie == 'l'){
-                    Lobo tmp(jogo.getPLobo(),0,jogo.getSLobo(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    Lobo tmp(jogo.getPLobo(),0,jogo.getSLobo(),especie,linha,coluna,jogo.getReserva()->newId(),-1);
                     jogo.getReserva()->AddAnimal(tmp);
                     cout << "\nCria lobo em posicao aleatoria!";
                 } else if (especie == 'g'){
-                    Canguru tmp(jogo.getPCanguru(),0,jogo.getSCanguru(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                    Canguru tmp(jogo.getPCanguru(),0,jogo.getSCanguru(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCanguru());
                     jogo.getReserva()->AddAnimal(tmp);
                     cout << "\nCria canguru em posicao aleatoria!";
                 } else {
@@ -149,20 +184,20 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
                 else{
                     if(especie == 'c'){
                         massa = rand() % 4+1;
-                        Coelho tmp(massa,0,jogo.getSCoelho(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        Coelho tmp(massa,0,jogo.getSCoelho(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCoelho());
                         jogo.getReserva()->AddAnimal(tmp);
                         cout << "\nCria coelho na linha:" << linha << " coluna:" << coluna;
                     } else if (especie == 'o'){
                         massa = rand() % 5 + 4;
-                        Ovelha tmp(massa,0,jogo.getSOvelha(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        Ovelha tmp(massa,0,jogo.getSOvelha(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVOvelha());
                         jogo.getReserva()->AddAnimal(tmp);
                         cout << "\nCria ovelha na linha:" << linha << " coluna:" << coluna;
                     } else if (especie == 'l'){
-                        Lobo tmp(jogo.getPLobo(),0,jogo.getSLobo(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        Lobo tmp(jogo.getPLobo(),0,jogo.getSLobo(),especie,linha,coluna,jogo.getReserva()->newId(),-1);
                         jogo.getReserva()->AddAnimal(tmp);
                         cout << "\nCria lobo na linha:" << linha << " coluna:" << coluna;
                     } else if (especie == 'g'){
-                        Canguru tmp(jogo.getPCanguru(),0,jogo.getSCanguru(),"maria",especie,linha,coluna,jogo.getReserva()->newId());
+                        Canguru tmp(jogo.getPCanguru(),0,jogo.getSCanguru(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCanguru());
                         jogo.getReserva()->AddAnimal(tmp);
                         cout << "\nCria canguru na linha:" << linha << " coluna:" << coluna;
                     } else {
@@ -184,7 +219,6 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
                     cout << "\nPosicao sem animais";
                 else{
                     jogo.getReserva()->mataAnimal(linha,coluna);
-                    //FALTA DEFINIR A FUNÇÃO PARA MATAR ANIMAL
                     cout << "\nAnimais mortos!";
                 }
             }
@@ -221,10 +255,6 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
                         Cenoura tmp(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
                         jogo.getReserva()->AddAlimento(tmp);
                         cout << "\nColocar cenoura em posicao aleatoria!";
-                    } else if (tipo == 'p') {
-                        Corpo tmp(tipo, 4, 0, 1000, "carne", linha, coluna, jogo.getReserva()->newId());
-                        jogo.getReserva()->AddAlimento(tmp);
-                        cout << "\nColocar corpo em posicao aleatoria!";
                     } else if (tipo == 'b') {
                         Bife tmp(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
                         jogo.getReserva()->AddAlimento(tmp);
@@ -249,10 +279,6 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
                             Cenoura tmp(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
                             jogo.getReserva()->AddAlimento(tmp);
                             cout << "\nColocar cenoura na linha:" << linha << " coluna:" << coluna;
-                        } else if (tipo == 'p') {
-                            Corpo tmp(tipo, 4, 0, 1000, "carne", linha, coluna, jogo.getReserva()->newId());
-                            jogo.getReserva()->AddAlimento(tmp);
-                            cout << "\nColocar corpo na linha:" << linha << " coluna:" << coluna;
                         } else if (tipo == 'b') {
                             //string cheiro[2] = {"carne","ketchup"};
                             Bife tmp(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
@@ -378,7 +404,9 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
     }else if(com == "n"){
         recebe >> num;
         if(recebe.fail()){
-            cout << "\nPassa 1 instante";
+            cout << "\nPassa 1 instante\n";
+            jogo.getReserva()->movimentaAnimais();
+            mostraReserva(jogo);
             //jogo.incrementaInstante(1);
         }else{
             recebe >> pausa;
@@ -402,7 +430,10 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
         if(recebe.fail()){
             cout << "\nComando invalido!";
         }else{
-            cout << "\nComando valido!";
+            jogo.setNomeJogo(nome);
+            Jogo* guardar = new Jogo(jogo);
+            jogos.storeJogo(guardar);
+            cout << "\nJogo guardado com sucesso!\n";
         }
 
     }else if(com == "restore"){
@@ -410,12 +441,15 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
         if(recebe.fail()){
             cout << "\nComando invalido!";
         }else{
-            cout << "\nComando valido!";
+            /*Jogo* guardado = jogos.encontraJogo(nome);
+            jogo.operator=(*guardado);
+            cout << "\nJogo carregado!";*/
+            cout << "\nPor implementar";
         }
 
     }else if(com == "load"){
         recebe >> ficheiro;
-        if(leficheiro(jogo,ficheiro)){
+        if(leficheiro(jogo, jogos, ficheiro)){
             cout << "\nFicheiro de comandos lido com sucesso!\n";
         }
         else{
@@ -440,7 +474,7 @@ void Simulador::validaComando(Jogo &jogo, istringstream &recebe) {
     }
 }
 
-bool Simulador::leficheiro(Jogo &jogo, const string ficheiro) {
+bool Simulador::leficheiro(Jogo &jogo, Store &jogos, const string ficheiro) {
     ifstream comandos;
     string aux;
     comandos.open(ficheiro);
@@ -449,7 +483,7 @@ bool Simulador::leficheiro(Jogo &jogo, const string ficheiro) {
         while(getline(comandos, aux))
         {
             istringstream recebe(aux);
-            validaComando(jogo, recebe);
+            validaComando(jogo, jogos, recebe);
         }
         comandos.close();
         return true;
