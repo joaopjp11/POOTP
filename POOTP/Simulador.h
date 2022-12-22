@@ -30,7 +30,7 @@ using namespace term;
 class Simulador {
 public:
     static void comecaSimulador();
-    static void validaComando(Jogo &jogo, Store &jogos, istringstream &recebe);
+    static string validaComando(Jogo &jogo, Store &jogos, istringstream &recebe);
     static void mostraReservaInicial(Jogo &jogo);
     static void mostraReserva(Jogo &jogo);
     static bool leficheiro(Jogo &jogo, Store &jogos, const string ficheiro);

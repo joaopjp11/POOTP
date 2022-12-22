@@ -5,18 +5,18 @@ Reserva::Reserva(int nl, int nc): NL(nl), NC(nc) {}
 Reserva::~Reserva() {}
 
 
-void Reserva::AddAnimal(const Animal &a) {
-    this->animais.push_back(a);
+void Reserva::AddAnimal(Animal *a) {
+    animais.push_back(a);
 }
 
-void Reserva::AddAlimento(const Alimento &a) {
-    this->alimentos.push_back(a);
+void Reserva::AddAlimento(Alimento *a) {
+    alimentos.push_back(a);
 }
 
 void Reserva::eliminaAnimal(int num) {
     auto i = this->animais.begin();
     while(i != this->animais.end()){
-        if(i->getId() == num)
+        if((*i)->getId() == num)
             this->animais.erase(i);
         else
             ++i;
@@ -26,7 +26,7 @@ void Reserva::eliminaAnimal(int num) {
 void Reserva::eliminaAlimento(int num) {
     auto i = this->alimentos.begin();
     while(i != this->alimentos.end()){
-        if(i->getId() == num)
+        if((*i)->getId() == num)
             this->alimentos.erase(i);
         else
             ++i;
@@ -40,7 +40,7 @@ string Reserva::getAsString() const {
     else{
         auto i = this->animais.begin();
         while(i != this->animais.end()){
-            buffer << i->getAsString();
+            buffer << (*i)->getAsString();
             ++i;
         }
     }
@@ -50,7 +50,7 @@ string Reserva::getAsString() const {
     else{
         auto it = this->alimentos.begin();
         while(it != this->alimentos.end()){
-            buffer << it->getAsString();
+            buffer << (*it)->getAsString();
             ++it;
         }
     }
@@ -68,7 +68,7 @@ bool Reserva::procuraIdAnimal(int id) const {
     else{
         auto i = this->animais.begin();
         while(i != this->animais.end()){
-            if(i->getId() == id)
+            if((*i)->getId() == id)
                 return true;
             else
                 ++i;
@@ -83,7 +83,7 @@ bool Reserva::procuraIdAlimento(int id) const {
     else{
         auto it = this->alimentos.begin();
         while(it != this->alimentos.end()){
-            if(it->getId() == id)
+            if((*it)->getId() == id)
                 return true;
             else
                 ++it;
@@ -95,8 +95,8 @@ bool Reserva::procuraIdAlimento(int id) const {
 string Reserva::listAnimal(int id) const {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getId() == id)
-            return it->getAsString();
+        if((*it)->getId() == id)
+            return (*it)->getAsString();
         else
             ++it;
     }
@@ -106,8 +106,8 @@ string Reserva::listAnimal(int id) const {
 string Reserva::listAlimento(int id) const {
     auto it = this->alimentos.begin();
     while(it != this->alimentos.end()){
-        if(it->getId() == id)
-            return it->getAsString();
+        if((*it)->getId() == id)
+            return (*it)->getAsString();
         else
             ++it;
     }
@@ -117,9 +117,9 @@ string Reserva::listAlimento(int id) const {
 int Reserva::verificaLinhaColunaAnimal(int nl, int nc) const {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
 
-            return it->getId();
+            return (*it)->getId();
         }
         else
             ++it;
@@ -130,9 +130,9 @@ int Reserva::verificaLinhaColunaAnimal(int nl, int nc) const {
 int Reserva::verificaLinhaColunaAlimento(int nl, int nc) const {
     auto i = this->alimentos.begin();
     while(i != this->alimentos.end()){
-        if(i->getPosLinha() == nl && i->getPosColuna() == nc){
+        if((*i)->getPosLinha() == nl && (*i)->getPosColuna() == nc){
 
-            return i->getId();
+            return (*i)->getId();
         }
         else
             ++i;
@@ -143,8 +143,8 @@ int Reserva::verificaLinhaColunaAlimento(int nl, int nc) const {
 void Reserva::mataAnimal(int num){
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getId() == num){
-            Corpo tmp('p', 7, 0, 1000, "carne", it->getPosLinha(), it->getPosColuna(), newId());
+        if((*it)->getId() == num){
+            Alimento * tmp = new Corpo('p', 7, 0, 1000, "carne", (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
             AddAlimento(tmp);
             this->animais.erase(it);
         }
@@ -156,8 +156,8 @@ void Reserva::mataAnimal(int num){
 void Reserva::mataAnimal(int nl, int nc) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
-            Corpo tmp('p', 7, 0, 1000, "carne", nl, nc, newId());
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            Alimento * tmp = new Corpo('p', 7, 0, 1000, "carne", nl, nc, newId());
             AddAlimento(tmp);
             this->animais.erase(it);
         }
@@ -169,7 +169,7 @@ void Reserva::mataAnimal(int nl, int nc) {
 bool Reserva::removeAlimento(int num) {
     auto i = this->alimentos.begin();
     while(i != this->alimentos.end()){
-        if(i->getId() == num){
+        if((*i)->getId() == num){
             this->alimentos.erase(i);
             return true;
         }
@@ -182,7 +182,7 @@ bool Reserva::removeAlimento(int num) {
 void Reserva::alimentaAnimal(int num, int nutri, int toxi) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getId() == num){
+        if((*it)->getId() == num){
             //ALIMENTAR ANIMAL -> EM FALTA!!!
             cout << "\nALIMENTADO!";
             ++it;
@@ -195,7 +195,7 @@ void Reserva::alimentaAnimal(int num, int nutri, int toxi) {
 void Reserva::alimentaAnimal(int nl, int nc, int nutri, int toxi) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
             //ALIMENTAR ANIMAL -> EM FALTA!!!
             cout << "\nALIMENTADO!";
             ++it;
@@ -205,11 +205,20 @@ void Reserva::alimentaAnimal(int nl, int nc, int nutri, int toxi) {
     }
 }
 
-void Reserva::listPosicao(int nl, int nc) const {
+string Reserva::listPosicao(int nl, int nc) const {
+    string inicial, lista, final;
+    int conta = 0;
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
-            cout << it->getAsString() << endl;
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            if(conta == 0){
+                inicial = (*it)->getAsString();
+                ++conta;
+            }
+            else{
+                lista = (*it)->getAsString();
+                final = inicial.append(lista);
+            }
             ++it;
         }
         else
@@ -218,13 +227,14 @@ void Reserva::listPosicao(int nl, int nc) const {
 
     auto i = this->alimentos.begin();
     while(i != this->alimentos.end()){
-        if(i->getPosLinha() == nl && i->getPosColuna() == nc){
-            cout << i->getAsString() << endl;
+        if((*i)->getPosLinha() == nl && (*i)->getPosColuna() == nc){
+            cout << (*i)->getAsString();
             ++i;
         }
         else
             ++i;
     }
+    return lista;
 }
 
 void Reserva::ComandoAnim() const {
@@ -233,7 +243,7 @@ void Reserva::ComandoAnim() const {
     else {
         auto it = this->animais.begin();
         while (it != this->animais.end()) {
-            cout << "\nId: " << it->getId() << " Especie: " << it->getEspecie() << " Saude: " << it->getSaude();
+            cout << "\nId: " << (*it)->getId() << " Especie: " << (*it)->getEspecie() << " Saude: " << (*it)->getSaude();
             ++it;
         }
     }
@@ -242,8 +252,8 @@ void Reserva::ComandoAnim() const {
 char Reserva::especieAnimal(int nl, int nc) const{
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
-            return it->getEspecie();
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            return (*it)->getEspecie();
         }
         else
             ++it;
@@ -254,9 +264,9 @@ char Reserva::especieAnimal(int nl, int nc) const{
 char Reserva::tipoAlimento(int nl, int nc) const {
     auto it = this->alimentos.begin();
     while(it != this->alimentos.end()){
-        if(it->getPosLinha() == nl && it->getPosColuna() == nc){
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
 
-            return it->getTipo();
+            return (*it)->getTipo();
         }
         else
             ++it;
@@ -267,21 +277,29 @@ char Reserva::tipoAlimento(int nl, int nc) const {
 void Reserva::movimentaAnimais() {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
-        if(it->getEspecie() == 'c'){
-            it->movimentoCoelho(NL,NC);
+        if((*it)->getEspecie() == 'c'){
+            (*it)->movimentoCoelho(NL,NC);
             ++it;
-        } else if(it->getEspecie() == 'o'){
-            it->movimentoOvelha(NL,NC);
+        } else if((*it)->getEspecie() == 'o'){
+            (*it)->movimentoOvelha(NL,NC);
             ++it;
-        } else if(it->getEspecie() == 'l'){
-            it->movimentoLobo(NL,NC);
+        } else if((*it)->getEspecie() == 'l'){
+            (*it)->movimentoLobo(NL,NC);
             ++it;
-        } else if(it->getEspecie() == 'g'){
-            it->movimentoCanguru(NL,NC);
+        } else if((*it)->getEspecie() == 'g'){
+            (*it)->movimentoCanguru(NL,NC);
             ++it;
         }
         else
             ++it;
+    }
+}
+
+void Reserva::AumentaFomeAnimais() {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        (*it)->aumentaFome();
+        ++it;
     }
 }
 

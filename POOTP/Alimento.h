@@ -34,27 +34,6 @@ private:
     int idAlimento;
 };
 
-/*
-class Relva : public Alimento{
-public:
-    Relva(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
-};
-
-class Cenoura : public Alimento{
-public:
-    Cenoura(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
-};
-
-class Corpo : public Alimento{
-public:
-    Corpo(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
-};
-
-class Bife : public Alimento{
-public:
-    Bife(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
-};
-*/
 class Misterio : public Alimento{
 public:
 

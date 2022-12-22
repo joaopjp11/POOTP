@@ -6,7 +6,7 @@ Alimento::~Alimento() {}
 
 string Alimento::getAsString() const {
     ostringstream os;
-    os << "Alimento:" << " Id - " << idAlimento << "| Tipo - " << tipo << "| cheiro - " << cheiro << "| valor nutritivo - " << valornutritivo << "| toxicidade - " << toxicidade << "| duracao - " << duracao << "| linha - " << poslinha << "| coluna - " << poscoluna << endl;
+    os << "Alimento:" << "Id-" << idAlimento << "|Tipo-" << tipo << "|C-" << cheiro << "|N-" << valornutritivo << "|T-" << toxicidade << "|D-" << duracao << "|L-" << poslinha << "|C-" << poscoluna << endl;
     return os.str();
 }
 

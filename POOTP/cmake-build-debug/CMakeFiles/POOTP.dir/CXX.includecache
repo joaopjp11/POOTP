@@ -20,10 +20,6 @@ cstdlib
 vector
 -
 
-C:/Users/joaop/CLionProjects/POOTP/Animal.cpp
-Animal.h
-C:/Users/joaop/CLionProjects/POOTP/Animal.h
-
 C:/Users/joaop/CLionProjects/POOTP/Animal.h
 Alimento.h
 C:/Users/joaop/CLionProjects/POOTP/Alimento.h
@@ -44,10 +40,6 @@ C:/Users/joaop/CLionProjects/POOTP/Bife.h
 Alimento.h
 C:/Users/joaop/CLionProjects/POOTP/Alimento.h
 
-C:/Users/joaop/CLionProjects/POOTP/Canguru.cpp
-Canguru.h
-C:/Users/joaop/CLionProjects/POOTP/Canguru.h
-
 C:/Users/joaop/CLionProjects/POOTP/Canguru.h
 Animal.h
 C:/Users/joaop/CLionProjects/POOTP/Animal.h
@@ -55,10 +47,6 @@ C:/Users/joaop/CLionProjects/POOTP/Animal.h
 C:/Users/joaop/CLionProjects/POOTP/Cenoura.h
 Alimento.h
 C:/Users/joaop/CLionProjects/POOTP/Alimento.h
-
-C:/Users/joaop/CLionProjects/POOTP/Coelho.cpp
-Coelho.h
-C:/Users/joaop/CLionProjects/POOTP/Coelho.h
 
 C:/Users/joaop/CLionProjects/POOTP/Coelho.h
 Animal.h
@@ -88,17 +76,9 @@ cstdlib
 vector
 -
 
-C:/Users/joaop/CLionProjects/POOTP/Lobo.cpp
-Lobo.h
-C:/Users/joaop/CLionProjects/POOTP/Lobo.h
-
 C:/Users/joaop/CLionProjects/POOTP/Lobo.h
 Animal.h
 C:/Users/joaop/CLionProjects/POOTP/Animal.h
-
-C:/Users/joaop/CLionProjects/POOTP/Ovelha.cpp
-Ovelha.h
-C:/Users/joaop/CLionProjects/POOTP/Ovelha.h
 
 C:/Users/joaop/CLionProjects/POOTP/Ovelha.h
 Animal.h

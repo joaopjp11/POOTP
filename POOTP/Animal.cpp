@@ -10,7 +10,7 @@ void Animal::aumentaFome() {
 
 string Animal::getAsString() const {
     ostringstream os;
-    os << "Animal:" << " Id - " << idAnimal << "| especie - " << especie << "| massa - " << massa << "| fome - " << fome << "| saude - " << saude << "| linha - " << poslinha << "| coluna - " << poscoluna << endl;
+    os << "Animal:" << "Id-" << idAnimal << "|Especie-" << especie << "|M-" << massa << "|F-" << fome << "|S-" << saude << "|L-" << poslinha << "|C-" << poscoluna << "\n";
     return os.str();
 }
 

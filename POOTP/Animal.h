@@ -37,7 +37,6 @@ private:
     int massa;
     int fome;
     int saude;
-    string nome;
     char especie;
     int poslinha;
     int poscoluna;
@@ -45,28 +44,7 @@ private:
     int vidainstantes;
 };
 
-/*
-class Coelho : public Animal{
-public:
-    Coelho(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal);
-};
 
-
-class Ovelha : public Animal{
-public:
-    Ovelha(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal);
-};
-
-class Lobo : public Animal{
-public:
-    Lobo(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal);
-};
-
-class Canguru : public Animal{
-public:
-    Canguru(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal);
-};
-*/
 class Especial : public Animal{
 public:
 
