@@ -5,8 +5,11 @@
 #include "Alimento.h"
 
 class Cenoura : public Alimento{
+    string cheiro = "verdura";
 public:
-    Cenoura(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
+    Cenoura(char tipo, int nutri, int tox, int dur, int l, int c, int id);
+    ~Cenoura() override = default;
+    string getAsString() const override; //Descrição do alimento
 };
 
 

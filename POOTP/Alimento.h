@@ -12,23 +12,24 @@ using namespace std;
 
 class Alimento {
 public:
-    Alimento(char t, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
-    ~Alimento();
-    char getTipo() const{return tipo;}
-    int getNutricao() const{return valornutritivo;}
-    int getDuracao() const{return duracao;}
-    int getToxicidade() const{return toxicidade;}
-    string getCheiro() const{return cheiro;}
-    int getPosLinha() const{return poslinha;}
-    int getPosColuna() const{return poscoluna;}
-    int getId() const{return idAlimento;}
-    string getAsString() const;
-private:
+    Alimento(char t, int nutri, int tox, int dur, int l, int c, int id); //construtor
+    virtual ~Alimento(); //destrutor
+    char getTipo() const{return tipo;} //Get tipo de alimento
+    int getNutricao() const{return valornutritivo;} //Get valor nutritivo
+    int getDuracao() const{return duracao;} //Get duração
+    int getToxicidade() const{return toxicidade;} //Get toxicidade
+    //string getCheiro() const{return cheiro;} //Get cheiro
+    int getPosLinha() const{return poslinha;} //Get posição linha
+    int getPosColuna() const{return poscoluna;} //get posição coluna
+    int getId() const{return idAlimento;} //Get Id do alimento
+    void diminuiDuracao(); //Diminui a duração de vida do alimento
+    virtual string getAsString() const; //Descrição do alimento
+protected:
     char tipo;
     int valornutritivo;
     int toxicidade;
     int duracao;
-    string cheiro;
+    //string cheiro;
     int poslinha;
     int poscoluna;
     int idAlimento;

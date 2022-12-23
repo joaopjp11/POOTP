@@ -23,6 +23,7 @@
 #include <cstdlib>
 #include <vector>
 #include <ctime>
+#include <unistd.h>
 
 using namespace std;
 using namespace term;

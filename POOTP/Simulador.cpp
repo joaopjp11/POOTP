@@ -162,7 +162,6 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                     if(especie == 'c'){
                         massa = rand() % 4+1;
                         Animal * tmp = new Coelho(massa,0,jogo.getSCoelho(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCoelho());
-                        //Coelho tmp(massa,0,jogo.getSCoelho(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCoelho());
                         jogo.getReserva()->AddAnimal(tmp);
                         return "Coelho criado";
                     } else if (especie == 'o'){
@@ -224,16 +223,15 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                 coluna = rand() % jogo.getReserva()->getColunas() + 1;
                 if(jogo.getReserva()->verificaLinhaColunaAlimento(linha,coluna) == 0) {
                     if (tipo == 'r') {
-                        //string cheiro[2] = {"erva","verdura"};
-                        Alimento * tmp = new Relva(tipo, 3, 0, jogo.getVRelva(), "teste", linha, coluna, jogo.getReserva()->newId());
+                        Alimento * tmp = new Relva(tipo, 3, 0, jogo.getVRelva(), linha, coluna, jogo.getReserva()->newId());
                         jogo.getReserva()->AddAlimento(tmp);
                         return "Colocar relva em posicao aleatoria!";
                     } else if (tipo == 't') {
-                        Alimento * tmp = new Cenoura(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
+                        Alimento * tmp = new Cenoura(tipo, 4, 0, 1000, linha, coluna, jogo.getReserva()->newId());
                         jogo.getReserva()->AddAlimento(tmp);
                         return "Colocar cenoura em posicao aleatoria!";
                     } else if (tipo == 'b') {
-                        Alimento * tmp = new Bife(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
+                        Alimento * tmp = new Bife(tipo, 10, 2, jogo.getVBife(), linha, coluna, jogo.getReserva()->newId());
                         jogo.getReserva()->AddAlimento(tmp);
                         return "Colocar bife em posicao aleatoria!";
                     } else {
@@ -248,17 +246,16 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                 else{
                     if(jogo.getReserva()->verificaLinhaColunaAlimento(linha,coluna) == 0) {
                         if (tipo == 'r') {
-                            //string cheiro[2] = {"erva","verdura"};
-                            Alimento * tmp = new Relva(tipo, 3, 0, jogo.getVRelva(), "teste", linha, coluna, jogo.getReserva()->newId());
+                            Alimento * tmp = new Relva(tipo, 3, 0, jogo.getVRelva(), linha, coluna, jogo.getReserva()->newId());
                             jogo.getReserva()->AddAlimento(tmp);
                             return "Relva colocada";
                         } else if (tipo == 't') {
-                            Alimento * tmp = new Cenoura(tipo, 4, 0, 1000, "verdura", linha, coluna, jogo.getReserva()->newId());
+                            Alimento * tmp = new Cenoura(tipo, 4, 0, 1000, linha, coluna, jogo.getReserva()->newId());
                             jogo.getReserva()->AddAlimento(tmp);
                             return "Cenoura colocada";
                         } else if (tipo == 'b') {
                             //string cheiro[2] = {"carne","ketchup"};
-                            Alimento * tmp = new Bife(tipo, 10, 2, jogo.getVBife(), "teste", linha, coluna, jogo.getReserva()->newId());
+                            Alimento * tmp = new Bife(tipo, 10, 2, jogo.getVBife(), linha, coluna, jogo.getReserva()->newId());
                             jogo.getReserva()->AddAlimento(tmp);
                             return "Bife colocado";
                         } else {
@@ -384,16 +381,34 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
             jogo.getReserva()->movimentaAnimais();
             //mostraReserva(jogo);
             jogo.getReserva()->AumentaFomeAnimais();
+            jogo.getReserva()->DiminuiDuracaoAlimentos();
             jogo.incrementaInstante(1);
             return "Passa 1 instante";
         }else{
             recebe >> pausa;
             if(recebe.fail()){
+                int aux = num;
+                do{
+                    jogo.getReserva()->movimentaAnimais();
+                    //mostraReserva(jogo);
+                    jogo.getReserva()->AumentaFomeAnimais();
+                    jogo.getReserva()->DiminuiDuracaoAlimentos();
+                    jogo.incrementaInstante(1);
+                    aux--;
+                } while (aux > 0);
                 return "Passa instantes";
-                //jogo.incrementaInstante(num);
             }else{
+                int aux = num;
+                do{
+                    jogo.getReserva()->movimentaAnimais();
+                    //mostraReserva(jogo);
+                    jogo.getReserva()->AumentaFomeAnimais();
+                    jogo.getReserva()->DiminuiDuracaoAlimentos();
+                    jogo.incrementaInstante(1);
+                    aux--;
+                    sleep(pausa);
+                } while (aux > 0);
                 return "Passa instantes com pausa";
-                //jogo.incrementaInstante(num);
             }
         }
 
@@ -420,8 +435,7 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
             return "Comando invalido!";
         }else{
             /*Jogo* guardado = jogos.encontraJogo(nome);
-            jogo.operator=(*guardado);
-            cout << "\nJogo carregado!";*/
+            jogo.operator=(*guardado);*/
             return "Por implementar";
         }
 

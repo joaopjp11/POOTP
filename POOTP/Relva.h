@@ -5,8 +5,11 @@
 #include "Alimento.h"
 
 class Relva : public Alimento{
+    string cheiro[2]= {"erva","verdura"};
 public:
-    Relva(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
+    Relva(char tipo, int nutri, int tox, int dur, int l, int c, int id);
+    ~Relva() override = default;
+    string getAsString() const override; //Descrição do alimento
 };
 
 

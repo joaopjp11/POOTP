@@ -4,8 +4,11 @@
 #include "Alimento.h"
 
 class Corpo : public Alimento{
+    string cheiro = "carne";
 public:
-    Corpo(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
+    Corpo(char tipo, int nutri, int tox, int dur, int l, int c, int id);
+    ~Corpo() override = default;
+    string getAsString() const override; //Descrição do alimento
 };
 
 

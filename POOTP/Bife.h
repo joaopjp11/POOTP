@@ -5,8 +5,11 @@
 #include "Alimento.h"
 
 class Bife : public Alimento{
+    string cheiro[2] = {"carne","ketchup"};
 public:
-    Bife(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id);
+    Bife(char tipo, int nutri, int tox, int dur, int l, int c, int id);
+    ~Bife() override = default;
+    string getAsString() const override; //Descrição do alimento
 };
 
 

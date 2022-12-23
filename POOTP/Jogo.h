@@ -14,11 +14,13 @@ using namespace std;
 
 class Jogo {
 public:
-    Jogo(Reserva *aux, int i = 0):reserva(aux),instante(i){}
-    Reserva* getReserva() const{return reserva;}
-    void setNomeJogo(string nome){nomeJogo = nome;}
-    string getNomeJogo() const{return nomeJogo;}
-    void incrementaInstante(int num, int pausa=0);
+    Jogo(Reserva *aux, int i = 0):reserva(aux),instante(i){} //Construtor
+    ~Jogo() = default; //Destrutor
+    Reserva* getReserva() const{return reserva;} //Obtem reserva
+    void setNomeJogo(string nome){nomeJogo = nome;} //Declara nome do jogo(save)
+    string getNomeJogo() const{return nomeJogo;} //Obtem nome do jogo(save)
+    void incrementaInstante(int num, int pausa=0); //Incrementa o nº de instantes
+    //Obtem variáveis constantes - que serão declaradas no ficheiro constantes.txt
     int getSCoelho() const{return SCoelho;}
     int getVCoelho() const{return VCoelho;}
     int getSOvelha() const{return SOvelha;}
@@ -30,11 +32,11 @@ public:
     int getPCanguru() const{return PCanguru;}
     int getVRelva() const{return VRelva;}
     int getVBife() const{return VBife;}
-    void setConstantes(istringstream &recebe);
-    Jogo& operator=(const Jogo& aux)
+    void setConstantes(istringstream &recebe); //Lê ficheiro constantes.txt e retira os valores das variáveis
+    Jogo& operator=(const Jogo& aux) //Operador "="
     {
         nomeJogo = aux.nomeJogo;
-        reserva = aux.reserva;
+        Reserva newreserva(*aux.reserva);
         instante = aux.instante;
         SCoelho = aux.SCoelho;
         VCoelho = aux.VCoelho;
@@ -50,9 +52,10 @@ public:
         return *this;
     }
 private:
-    string nomeJogo;
-    Reserva *reserva;
-    int instante;
+    string nomeJogo; //nome jogo
+    Reserva *reserva; //Reserva
+    int instante; //nº de instantes
+    //variáveis definidas pelo ficheiro constantes.txt
     int SCoelho;
     int VCoelho;
     int SOvelha;
@@ -68,10 +71,10 @@ private:
 
 
 class Store{
-    vector<Jogo*> JogosGuardados;
+    vector<Jogo*> JogosGuardados; //vetor que guarda a lista de jogo guardados
 public:
-    void storeJogo(Jogo* aux);
-    Jogo* encontraJogo(string nome);
+    void storeJogo(Jogo* aux); //Guarda jogo no vetor JogosGuardados
+    Jogo* encontraJogo(string nome); //Encontra um jogo especifico (através do nome) no vetor JogosGuardados
 };
 
 #endif //POOTP_JOGO_H

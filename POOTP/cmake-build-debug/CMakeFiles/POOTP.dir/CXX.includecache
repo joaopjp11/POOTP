@@ -56,10 +56,6 @@ C:/Users/joaop/CLionProjects/POOTP/Corpo.h
 Alimento.h
 C:/Users/joaop/CLionProjects/POOTP/Alimento.h
 
-C:/Users/joaop/CLionProjects/POOTP/Jogo.cpp
-Jogo.h
-C:/Users/joaop/CLionProjects/POOTP/Jogo.h
-
 C:/Users/joaop/CLionProjects/POOTP/Jogo.h
 Reserva.h
 C:/Users/joaop/CLionProjects/POOTP/Reserva.h
@@ -87,10 +83,6 @@ C:/Users/joaop/CLionProjects/POOTP/Animal.h
 C:/Users/joaop/CLionProjects/POOTP/Relva.h
 Alimento.h
 C:/Users/joaop/CLionProjects/POOTP/Alimento.h
-
-C:/Users/joaop/CLionProjects/POOTP/Reserva.cpp
-Reserva.h
-C:/Users/joaop/CLionProjects/POOTP/Reserva.h
 
 C:/Users/joaop/CLionProjects/POOTP/Reserva.h
 Animal.h
@@ -152,6 +144,8 @@ cstdlib
 vector
 -
 ctime
+-
+unistd.h
 -
 
 C:/Users/joaop/CLionProjects/POOTP/Terminal.h

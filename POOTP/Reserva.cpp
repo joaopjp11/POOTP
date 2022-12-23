@@ -2,6 +2,25 @@
 
 Reserva::Reserva(int nl, int nc): NL(nl), NC(nc) {}
 
+Reserva::Reserva(const Reserva &obj) {
+    this->NL = obj.NL;
+    this->NC = obj.NC;
+    this->id = obj.id;
+
+    auto it = obj.animais.begin();
+    while (it < obj.animais.end()){
+        this->AddAnimal(new Animal(**it));
+        ++it;
+    }
+
+    auto i = obj.alimentos.begin();
+    while (i < obj.alimentos.end()){
+        this->AddAlimento(new Alimento(**i));
+        ++i;
+    }
+
+}
+
 Reserva::~Reserva() {}
 
 
@@ -144,7 +163,7 @@ void Reserva::mataAnimal(int num){
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if((*it)->getId() == num){
-            Alimento * tmp = new Corpo('p', 7, 0, 1000, "carne", (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+            Alimento * tmp = new Corpo('p', 7, 0, 1000, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
             AddAlimento(tmp);
             this->animais.erase(it);
         }
@@ -157,7 +176,7 @@ void Reserva::mataAnimal(int nl, int nc) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
-            Alimento * tmp = new Corpo('p', 7, 0, 1000, "carne", nl, nc, newId());
+            Alimento * tmp = new Corpo('p', 7, 0, 1000, nl, nc, newId());
             AddAlimento(tmp);
             this->animais.erase(it);
         }
@@ -206,19 +225,11 @@ void Reserva::alimentaAnimal(int nl, int nc, int nutri, int toxi) {
 }
 
 string Reserva::listPosicao(int nl, int nc) const {
-    string inicial, lista, final;
-    int conta = 0;
+    ostringstream os;
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
-            if(conta == 0){
-                inicial = (*it)->getAsString();
-                ++conta;
-            }
-            else{
-                lista = (*it)->getAsString();
-                final = inicial.append(lista);
-            }
+            os << (*it)->getAsString();
             ++it;
         }
         else
@@ -228,13 +239,13 @@ string Reserva::listPosicao(int nl, int nc) const {
     auto i = this->alimentos.begin();
     while(i != this->alimentos.end()){
         if((*i)->getPosLinha() == nl && (*i)->getPosColuna() == nc){
-            cout << (*i)->getAsString();
+            os << (*i)->getAsString();
             ++i;
         }
         else
             ++i;
     }
-    return lista;
+    return os.str();
 }
 
 void Reserva::ComandoAnim() const {
@@ -300,6 +311,17 @@ void Reserva::AumentaFomeAnimais() {
     while(it != this->animais.end()){
         (*it)->aumentaFome();
         ++it;
+    }
+}
+
+void Reserva::DiminuiDuracaoAlimentos() {
+    auto it = this->alimentos.begin();
+    while(it != this->alimentos.end()){
+        (*it)->diminuiDuracao();
+        if((*it)->getDuracao() == 0)
+            alimentos.erase(it);
+        else
+            ++it;
     }
 }
 

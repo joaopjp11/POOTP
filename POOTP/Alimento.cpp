@@ -1,19 +1,15 @@
 #include "Alimento.h"
 
-Alimento::Alimento(char t, int nutri, int tox, int dur, string cheiro, int l, int c, int id):tipo(t), valornutritivo(nutri),toxicidade(tox),duracao(dur),cheiro(cheiro),poslinha(l),poscoluna(c), idAlimento(id) {}
+Alimento::Alimento(char t, int nutri, int tox, int dur, int l, int c, int id):tipo(t), valornutritivo(nutri),toxicidade(tox),duracao(dur),poslinha(l),poscoluna(c), idAlimento(id) {}
 
 Alimento::~Alimento() {}
 
-string Alimento::getAsString() const {
-    ostringstream os;
-    os << "Alimento:" << "Id-" << idAlimento << "|Tipo-" << tipo << "|C-" << cheiro << "|N-" << valornutritivo << "|T-" << toxicidade << "|D-" << duracao << "|L-" << poslinha << "|C-" << poscoluna << endl;
-    return os.str();
+void Alimento::diminuiDuracao() {
+    duracao--;
 }
 
-//Relva::Relva(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {}
-
-//Cenoura::Cenoura(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {}
-
-//Corpo::Corpo(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {}
-
-//Bife::Bife(char tipo, int nutri, int tox, int dur, string cheiro, int l, int c, int id) : Alimento(tipo, nutri, tox, dur, cheiro, l, c, id) {}
+string Alimento::getAsString() const {
+    ostringstream os;
+    os << "Alimento:" << "Id-" << idAlimento << "|Tipo-" << tipo << "|N-" << valornutritivo << "|T-" << toxicidade << "|D-" << duracao << "|L-" << poslinha << "|C-" << poscoluna << endl;
+    return os.str();
+}

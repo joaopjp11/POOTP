@@ -14,21 +14,20 @@ using namespace std;
 
 class Animal {
 public:
-    Animal(int m, int f, int s, char e, int l, int c, int id, int vinst);
-    ~Animal();
-    void setPoslinha(int nl){poslinha = nl;}
-    void setPoscoluna(int nc){poscoluna = nc;}
-    int getMassa() const{return massa;}
-    int getFome() const{return fome;}
-    int getSaude() const{return saude;}
-    string getNome() const{return nome;}
-    char getEspecie() const{return especie;}
-    int getPosLinha() const{return poslinha;}
-    int getPosColuna() const{return poscoluna;}
-    int getVidaInstantes() const{return vidainstantes;}
-    int getId() const{return idAnimal;}
-    void aumentaFome();
-    string getAsString() const;
+    Animal(int m, int f, int s, char e, int l, int c, int id, int vinst); //construtor
+    virtual ~Animal(); //destrutor
+    void setPoslinha(int nl){poslinha = nl;} //Set posição linha
+    void setPoscoluna(int nc){poscoluna = nc;} //Set posição coluna
+    int getMassa() const{return massa;} //Get massa
+    int getFome() const{return fome;} //Get fome
+    int getSaude() const{return saude;} //Get saude
+    char getEspecie() const{return especie;} //Get especia
+    int getPosLinha() const{return poslinha;} //Get posição linha
+    int getPosColuna() const{return poscoluna;} //Get posição coluna
+    int getVidaInstantes() const{return vidainstantes;} //Get instantes que o animal fica vivo
+    int getId() const{return idAnimal;} //get Id
+    void aumentaFome(); //Aumenta a fome do animal
+    string getAsString() const; //Descrição do animal
     void movimentoCoelho(int nl, int nc);
     void movimentoOvelha(int nl, int nc);
     void movimentoLobo(int nl, int nc);

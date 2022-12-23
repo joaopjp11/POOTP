@@ -14,6 +14,7 @@ using namespace std;
 class Reserva {
 public:
     Reserva(int nl, int nc); //Construtor
+    Reserva(const Reserva &obj);
     ~Reserva(); //Destrutor
     int getLinhas() const{return NL;} //Get nº linhas
     int getColunas() const{return NC;} //Get nº colunas
@@ -39,7 +40,8 @@ public:
     char especieAnimal(int nl, int nc) const;
     char tipoAlimento(int nl, int nc) const;
     void movimentaAnimais(); //Lança as funções responsáveis pelos movimentos de cada especie de animal
-    void AumentaFomeAnimais();
+    void AumentaFomeAnimais(); //Aumenta a fome dos animais na reserva
+    void DiminuiDuracaoAlimentos(); //Diminui a duracao dos alimentos na reserva
 
 private:
     int NL; //Nº de linhas

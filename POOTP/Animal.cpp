@@ -178,12 +178,3 @@ void Animal::movimentoCanguru(int nl, int nc) {
             break;
     }
 }
-
-
-//Coelho::Coelho(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal): Animal(massa, fome, saude, nome, especie, poslinha, poscoluna, idAnimal) {}
-
-//Ovelha::Ovelha(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal): Animal(massa, fome, saude, nome, especie, poslinha, poscoluna, idAnimal) {}
-
-//Lobo::Lobo(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal): Animal(massa, fome, saude, nome, especie, poslinha, poscoluna, idAnimal) {}
-
-//Canguru::Canguru(int massa, int fome, int saude, string nome, char especie, int poslinha, int poscoluna, int idAnimal): Animal(massa, fome, saude, nome, especie, poslinha, poscoluna, idAnimal) {}
