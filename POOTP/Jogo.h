@@ -30,8 +30,12 @@ public:
     int getSCanguru() const{return SCanguru;}
     int getVCanguru() const{return VCanguru;}
     int getPCanguru() const{return PCanguru;}
+    int getSCavalo() const{return SCavalo;}
+    int getVCavalo() const{return VCavalo;}
+    int getPCavalo() const{return PCavalo;}
     int getVRelva() const{return VRelva;}
     int getVBife() const{return VBife;}
+    int getVMaca() const{return VMaca;}
     void setConstantes(istringstream &recebe); //Lê ficheiro constantes.txt e retira os valores das variáveis
     Jogo& operator=(const Jogo& aux) //Operador "="
     {
@@ -47,8 +51,12 @@ public:
         SCanguru = aux.SCanguru;
         VCanguru = aux.VCanguru;
         PCanguru = aux.PCanguru;
+        SCavalo = aux.SCavalo;
+        VCavalo = aux.VCavalo;
+        PCavalo = aux.PCavalo;
         VRelva = aux.VRelva;
         VBife = aux.VBife;
+        VMaca = aux.VMaca;
         return *this;
     }
 private:
@@ -65,8 +73,12 @@ private:
     int SCanguru;
     int VCanguru;
     int PCanguru;
+    int SCavalo;
+    int VCavalo;
+    int PCavalo;
     int VRelva;
     int VBife;
+    int VMaca;
 };
 
 

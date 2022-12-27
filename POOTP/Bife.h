@@ -10,6 +10,7 @@ public:
     Bife(char tipo, int nutri, int tox, int dur, int l, int c, int id);
     ~Bife() override = default;
     string getAsString() const override; //Descrição do alimento
+    void AtualizaNutriToxi() override;
 };
 
 

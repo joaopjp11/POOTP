@@ -8,6 +8,15 @@
 #include <cstdlib>
 #include <vector>
 #include "Corpo.h"
+#include "Coelho.h"
+#include "Ovelha.h"
+#include "Lobo.h"
+#include "Canguru.h"
+#include "Cavalo.h"
+#include "Maca.h"
+#include "Relva.h"
+#include "Cenoura.h"
+#include "Bife.h"
 
 using namespace std;
 
@@ -42,6 +51,9 @@ public:
     void movimentaAnimais(); //Lança as funções responsáveis pelos movimentos de cada especie de animal
     void AumentaFomeAnimais(); //Aumenta a fome dos animais na reserva
     void DiminuiDuracaoAlimentos(); //Diminui a duracao dos alimentos na reserva
+    void DiminuiVinstantes();
+    void verificaSaude();
+    void updateNutriToxiAlimentos();
 
 private:
     int NL; //Nº de linhas

@@ -104,6 +104,12 @@
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Canguru.h">
 			<Option target="POOTP"/>
 		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Cavalo.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Cavalo.h">
+			<Option target="POOTP"/>
+		</Unit>
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Cenoura.cpp">
 			<Option target="POOTP"/>
 		</Unit>
@@ -132,6 +138,12 @@
 			<Option target="POOTP"/>
 		</Unit>
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Lobo.h">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Maca.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Maca.h">
 			<Option target="POOTP"/>
 		</Unit>
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Ovelha.cpp">

@@ -224,6 +224,30 @@ Canguru.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Canguru.cpp.s
 .PHONY : Canguru.cpp.s
 
+Cavalo.obj: Cavalo.cpp.obj
+.PHONY : Cavalo.obj
+
+# target to build an object file
+Cavalo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Cavalo.cpp.obj
+.PHONY : Cavalo.cpp.obj
+
+Cavalo.i: Cavalo.cpp.i
+.PHONY : Cavalo.i
+
+# target to preprocess a source file
+Cavalo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Cavalo.cpp.i
+.PHONY : Cavalo.cpp.i
+
+Cavalo.s: Cavalo.cpp.s
+.PHONY : Cavalo.s
+
+# target to generate assembly for a file
+Cavalo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Cavalo.cpp.s
+.PHONY : Cavalo.cpp.s
+
 Cenoura.obj: Cenoura.cpp.obj
 .PHONY : Cenoura.obj
 
@@ -343,6 +367,30 @@ Lobo.s: Lobo.cpp.s
 Lobo.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Lobo.cpp.s
 .PHONY : Lobo.cpp.s
+
+Maca.obj: Maca.cpp.obj
+.PHONY : Maca.obj
+
+# target to build an object file
+Maca.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Maca.cpp.obj
+.PHONY : Maca.cpp.obj
+
+Maca.i: Maca.cpp.i
+.PHONY : Maca.i
+
+# target to preprocess a source file
+Maca.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Maca.cpp.i
+.PHONY : Maca.cpp.i
+
+Maca.s: Maca.cpp.s
+.PHONY : Maca.s
+
+# target to generate assembly for a file
+Maca.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Maca.cpp.s
+.PHONY : Maca.cpp.s
 
 Ovelha.obj: Ovelha.cpp.obj
 .PHONY : Ovelha.obj
@@ -509,6 +557,9 @@ help:
 	@echo ... Canguru.obj
 	@echo ... Canguru.i
 	@echo ... Canguru.s
+	@echo ... Cavalo.obj
+	@echo ... Cavalo.i
+	@echo ... Cavalo.s
 	@echo ... Cenoura.obj
 	@echo ... Cenoura.i
 	@echo ... Cenoura.s
@@ -524,6 +575,9 @@ help:
 	@echo ... Lobo.obj
 	@echo ... Lobo.i
 	@echo ... Lobo.s
+	@echo ... Maca.obj
+	@echo ... Maca.i
+	@echo ... Maca.s
 	@echo ... Ovelha.obj
 	@echo ... Ovelha.i
 	@echo ... Ovelha.s

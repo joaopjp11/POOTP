@@ -26,21 +26,20 @@ public:
     int getPosColuna() const{return poscoluna;} //Get posição coluna
     int getVidaInstantes() const{return vidainstantes;} //Get instantes que o animal fica vivo
     int getId() const{return idAnimal;} //get Id
-    void aumentaFome(); //Aumenta a fome do animal
-    string getAsString() const; //Descrição do animal
-    void movimentoCoelho(int nl, int nc);
-    void movimentoOvelha(int nl, int nc);
-    void movimentoLobo(int nl, int nc);
-    void movimentoCanguru(int nl, int nc);
-private:
+    virtual void aumentaFome(); //Aumenta a fome do animal
+    void diminuiSaude(int num);
+    void diminuiinstantes();
+    virtual string getAsString() const; //Descrição do animal
+
+protected:
     int massa;
     int fome;
     int saude;
     char especie;
     int poslinha;
     int poscoluna;
-    int idAnimal;
     int vidainstantes;
+    int idAnimal;
 };
 
 

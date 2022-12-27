@@ -10,6 +10,8 @@
 #include "Ovelha.h"
 #include "Lobo.h"
 #include "Canguru.h"
+#include "Cavalo.h"
+#include "Maca.h"
 #include "Relva.h"
 #include "Cenoura.h"
 #include "Corpo.h"

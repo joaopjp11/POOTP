@@ -7,6 +7,7 @@ class Coelho : public Animal{
 public:
     Coelho(int massa, int fome, int saude, char especie, int poslinha, int poscoluna, int idAnimal, int vidainstantes);
     ~Coelho() override = default;
+    void aumentaFome() override;
 };
 
 

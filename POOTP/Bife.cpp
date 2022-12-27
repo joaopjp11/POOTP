@@ -7,3 +7,8 @@ string Bife::getAsString() const {
     os << "Alimento:" << "Id-" << idAlimento << "|Tipo-" << tipo << "|C-carne,ketchup" << "|N-" << valornutritivo << "|T-" << toxicidade << "|D-" << duracao << "|L-" << poslinha << "|C-" << poscoluna << endl;
     return os.str();
 }
+
+void Bife::AtualizaNutriToxi() {
+    if(valornutritivo > 0)
+        valornutritivo--;
+}

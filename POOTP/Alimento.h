@@ -18,18 +18,17 @@ public:
     int getNutricao() const{return valornutritivo;} //Get valor nutritivo
     int getDuracao() const{return duracao;} //Get duração
     int getToxicidade() const{return toxicidade;} //Get toxicidade
-    //string getCheiro() const{return cheiro;} //Get cheiro
     int getPosLinha() const{return poslinha;} //Get posição linha
     int getPosColuna() const{return poscoluna;} //get posição coluna
     int getId() const{return idAlimento;} //Get Id do alimento
     void diminuiDuracao(); //Diminui a duração de vida do alimento
     virtual string getAsString() const; //Descrição do alimento
+    virtual void AtualizaNutriToxi(){}; //Caso defeult
 protected:
     char tipo;
     int valornutritivo;
     int toxicidade;
     int duracao;
-    //string cheiro;
     int poslinha;
     int poscoluna;
     int idAlimento;

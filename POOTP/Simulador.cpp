@@ -152,7 +152,11 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                     Animal * tmp = new Canguru(jogo.getPCanguru(),0,jogo.getSCanguru(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCanguru());
                     jogo.getReserva()->AddAnimal(tmp);
                     return "Cria canguru em posicao aleatoria!";
-                } else {
+                } else if (especie == 'M'){
+                    Animal * tmp = new Cavalo(jogo.getPCavalo(),0,jogo.getSCavalo(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCavalo());
+                    jogo.getReserva()->AddAnimal(tmp);
+                    return "Cria cavalo em posicao aleatoria!";
+                }else {
                     return "Impossivel criar animal dessa especie";
                 }
             }else{
@@ -177,6 +181,10 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                         Animal * tmp = new Canguru(jogo.getPCanguru(),0,jogo.getSCanguru(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCanguru());
                         jogo.getReserva()->AddAnimal(tmp);
                         return "Canguru criado";
+                    } else if (especie == 'M'){
+                        Animal * tmp = new Cavalo(jogo.getPCavalo(),0,jogo.getSCavalo(),especie,linha,coluna,jogo.getReserva()->newId(),jogo.getVCavalo());
+                        jogo.getReserva()->AddAnimal(tmp);
+                        return "Cavalo criado";
                     } else {
                         return "Impossivel criar animal dessa especie";
                     }
@@ -234,7 +242,11 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                         Alimento * tmp = new Bife(tipo, 10, 2, jogo.getVBife(), linha, coluna, jogo.getReserva()->newId());
                         jogo.getReserva()->AddAlimento(tmp);
                         return "Colocar bife em posicao aleatoria!";
-                    } else {
+                    } else if (tipo == 'a') {
+                        Alimento * tmp = new Maca(tipo, 5, 0, jogo.getVMaca(), linha, coluna, jogo.getReserva()->newId());
+                        jogo.getReserva()->AddAlimento(tmp);
+                        return "Colocar maca em posicao aleatoria!";
+                    }else {
                         return "Impossivel criar alimento desse tipo";
                     }
                 }
@@ -254,11 +266,14 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                             jogo.getReserva()->AddAlimento(tmp);
                             return "Cenoura colocada";
                         } else if (tipo == 'b') {
-                            //string cheiro[2] = {"carne","ketchup"};
                             Alimento * tmp = new Bife(tipo, 10, 2, jogo.getVBife(), linha, coluna, jogo.getReserva()->newId());
                             jogo.getReserva()->AddAlimento(tmp);
                             return "Bife colocado";
-                        } else {
+                        } else if (tipo == 'a') {
+                            Alimento * tmp = new Maca(tipo, 5, 0, jogo.getVMaca(), linha, coluna, jogo.getReserva()->newId());
+                            jogo.getReserva()->AddAlimento(tmp);
+                            return "Maca colocada";
+                        }else {
                             return "Impossivel criar alimento desse tipo";
                         }
                     }
@@ -379,9 +394,11 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
         recebe >> num;
         if(recebe.fail()){
             jogo.getReserva()->movimentaAnimais();
-            //mostraReserva(jogo);
             jogo.getReserva()->AumentaFomeAnimais();
+            jogo.getReserva()->DiminuiVinstantes();
+            jogo.getReserva()->verificaSaude();
             jogo.getReserva()->DiminuiDuracaoAlimentos();
+            jogo.getReserva()->updateNutriToxiAlimentos();
             jogo.incrementaInstante(1);
             return "Passa 1 instante";
         }else{
@@ -390,9 +407,11 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                 int aux = num;
                 do{
                     jogo.getReserva()->movimentaAnimais();
-                    //mostraReserva(jogo);
                     jogo.getReserva()->AumentaFomeAnimais();
+                    jogo.getReserva()->DiminuiVinstantes();
+                    jogo.getReserva()->verificaSaude();
                     jogo.getReserva()->DiminuiDuracaoAlimentos();
+                    jogo.getReserva()->updateNutriToxiAlimentos();
                     jogo.incrementaInstante(1);
                     aux--;
                 } while (aux > 0);
@@ -401,9 +420,11 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
                 int aux = num;
                 do{
                     jogo.getReserva()->movimentaAnimais();
-                    //mostraReserva(jogo);
                     jogo.getReserva()->AumentaFomeAnimais();
+                    jogo.getReserva()->DiminuiVinstantes();
+                    jogo.getReserva()->verificaSaude();
                     jogo.getReserva()->DiminuiDuracaoAlimentos();
+                    jogo.getReserva()->updateNutriToxiAlimentos();
                     jogo.incrementaInstante(1);
                     aux--;
                     sleep(pausa);

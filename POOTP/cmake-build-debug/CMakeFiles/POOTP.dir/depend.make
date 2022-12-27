@@ -17,6 +17,11 @@ CMakeFiles/POOTP.dir/Canguru.cpp.obj: \
  ../Animal.h \
  ../Canguru.cpp \
  ../Canguru.h
+CMakeFiles/POOTP.dir/Cavalo.cpp.obj: \
+ ../Alimento.h \
+ ../Animal.h \
+ ../Cavalo.cpp \
+ ../Cavalo.h
 CMakeFiles/POOTP.dir/Cenoura.cpp.obj: \
  ../Alimento.h \
  ../Cenoura.cpp \
@@ -33,15 +38,28 @@ CMakeFiles/POOTP.dir/Corpo.cpp.obj: \
 CMakeFiles/POOTP.dir/Jogo.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
+ ../Bife.h \
+ ../Canguru.h \
+ ../Cavalo.h \
+ ../Cenoura.h \
+ ../Coelho.h \
  ../Corpo.h \
  ../Jogo.cpp \
  ../Jogo.h \
+ ../Lobo.h \
+ ../Maca.h \
+ ../Ovelha.h \
+ ../Relva.h \
  ../Reserva.h
 CMakeFiles/POOTP.dir/Lobo.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
  ../Lobo.cpp \
  ../Lobo.h
+CMakeFiles/POOTP.dir/Maca.cpp.obj: \
+ ../Alimento.h \
+ ../Maca.cpp \
+ ../Maca.h
 CMakeFiles/POOTP.dir/Ovelha.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
@@ -54,7 +72,16 @@ CMakeFiles/POOTP.dir/Relva.cpp.obj: \
 CMakeFiles/POOTP.dir/Reserva.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
+ ../Bife.h \
+ ../Canguru.h \
+ ../Cavalo.h \
+ ../Cenoura.h \
+ ../Coelho.h \
  ../Corpo.h \
+ ../Lobo.h \
+ ../Maca.h \
+ ../Ovelha.h \
+ ../Relva.h \
  ../Reserva.cpp \
  ../Reserva.h
 CMakeFiles/POOTP.dir/Simulador.cpp.obj: \
@@ -62,11 +89,13 @@ CMakeFiles/POOTP.dir/Simulador.cpp.obj: \
  ../Animal.h \
  ../Bife.h \
  ../Canguru.h \
+ ../Cavalo.h \
  ../Cenoura.h \
  ../Coelho.h \
  ../Corpo.h \
  ../Jogo.h \
  ../Lobo.h \
+ ../Maca.h \
  ../Ovelha.h \
  ../Relva.h \
  ../Reserva.h \
@@ -83,11 +112,13 @@ CMakeFiles/POOTP.dir/main.cpp.obj: \
  ../Animal.h \
  ../Bife.h \
  ../Canguru.h \
+ ../Cavalo.h \
  ../Cenoura.h \
  ../Coelho.h \
  ../Corpo.h \
  ../Jogo.h \
  ../Lobo.h \
+ ../Maca.h \
  ../Ovelha.h \
  ../Relva.h \
  ../Reserva.h \

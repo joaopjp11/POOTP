@@ -7,5 +7,9 @@ PLobo 15
 SCanguru 20
 VCanguru 70
 PCanguru 10
+SCavalo 30
+VCavalo 35
+PCavalo 20
 VRelva 20
 VBife 30
+VMaca 15

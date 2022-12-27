@@ -36,12 +36,24 @@ void Jogo::setConstantes(istringstream &recebe) {
     }else if(var == "PCanguru"){
         recebe >> valor;
         PCanguru = valor;
+    }else if(var == "SCavalo"){
+        recebe >> valor;
+        SCavalo = valor;
+    }else if(var == "VCavalo"){
+        recebe >> valor;
+        VCavalo = valor;
+    }else if(var == "PCavalo"){
+        recebe >> valor;
+        PCavalo = valor;
     }else if(var == "VRelva"){
         recebe >> valor;
         VRelva = valor;
     }else if(var == "VBife"){
         recebe >> valor;
         VBife = valor;
+    }else if(var == "VMaca"){
+        recebe >> valor;
+        VMaca = valor;
     }
 }
 

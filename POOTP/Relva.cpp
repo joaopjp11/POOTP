@@ -8,3 +8,4 @@ string Relva::getAsString() const {
     return os.str();
 }
 
+
