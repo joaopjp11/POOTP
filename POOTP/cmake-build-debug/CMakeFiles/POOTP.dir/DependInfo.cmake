@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/joaop/CLionProjects/POOTP/Cenoura.cpp" "C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/CMakeFiles/POOTP.dir/Cenoura.cpp.obj"
   "C:/Users/joaop/CLionProjects/POOTP/Coelho.cpp" "C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/CMakeFiles/POOTP.dir/Coelho.cpp.obj"
   "C:/Users/joaop/CLionProjects/POOTP/Corpo.cpp" "C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/CMakeFiles/POOTP.dir/Corpo.cpp.obj"
+  "C:/Users/joaop/CLionProjects/POOTP/Historico.cpp" "C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/CMakeFiles/POOTP.dir/Historico.cpp.obj"
   "C:/Users/joaop/CLionProjects/POOTP/Jogo.cpp" "C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/CMakeFiles/POOTP.dir/Jogo.cpp.obj"
   "C:/Users/joaop/CLionProjects/POOTP/Lobo.cpp" "C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/CMakeFiles/POOTP.dir/Lobo.cpp.obj"
   "C:/Users/joaop/CLionProjects/POOTP/Maca.cpp" "C:/Users/joaop/CLionProjects/POOTP/cmake-build-debug/CMakeFiles/POOTP.dir/Maca.cpp.obj"

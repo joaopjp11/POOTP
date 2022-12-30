@@ -6,6 +6,22 @@ Reserva::Reserva(const Reserva &obj) {
     this->NL = obj.NL;
     this->NC = obj.NC;
     this->id = obj.id;
+    this->SCoelho = obj.SCoelho;
+    this->SCavalo = obj.SCavalo;
+    this->SCanguru = obj.SCanguru;
+    this->SOvelha = obj.SOvelha;
+    this->SLobo = obj.SLobo;
+    this->PCanguru = obj.PCanguru;
+    this->PCavalo = obj.PCavalo;
+    this->PLobo = obj.PLobo;
+    this->VCoelho = obj.VCoelho;
+    this->VCavalo = obj.VCavalo;
+    this->VCanguru = obj.VCanguru;
+    this->VLobo = obj.VLobo;
+    this->VOvelha = obj.VOvelha;
+    this->VRelva = obj.VRelva;
+    this->VBife = obj.VBife;
+    this->VMaca = obj.VMaca;
 
     auto it = obj.animais.begin();
     while (it < obj.animais.end()){
@@ -22,6 +38,62 @@ Reserva::Reserva(const Reserva &obj) {
 }
 
 Reserva::~Reserva() {}
+
+void Reserva::setConstantes(istringstream &recebe) {
+    string var;
+    int valor;
+    recebe >> var;
+
+    if(var == "SCoelho"){
+        recebe >> valor;
+        SCoelho = valor;
+    }else if(var == "VCoelho"){
+        recebe >> valor;
+        VCoelho = valor;
+    }else if(var == "SOvelha"){
+        recebe >> valor;
+        SOvelha = valor;
+    }else if(var == "VOvelha"){
+        recebe >> valor;
+        VOvelha = valor;
+    }else if(var == "SLobo"){
+        recebe >> valor;
+        SLobo = valor;
+    }else if(var == "VLobo"){
+        recebe >> valor;
+        VLobo = valor;
+    }else if(var == "PLobo"){
+        recebe >> valor;
+        PLobo = valor;
+    }else if(var == "SCanguru"){
+        recebe >> valor;
+        SCanguru = valor;
+    }else if(var == "VCanguru"){
+        recebe >> valor;
+        VCanguru = valor;
+    }else if(var == "PCanguru"){
+        recebe >> valor;
+        PCanguru = valor;
+    }else if(var == "SCavalo"){
+        recebe >> valor;
+        SCavalo = valor;
+    }else if(var == "VCavalo"){
+        recebe >> valor;
+        VCavalo = valor;
+    }else if(var == "PCavalo"){
+        recebe >> valor;
+        PCavalo = valor;
+    }else if(var == "VRelva"){
+        recebe >> valor;
+        VRelva = valor;
+    }else if(var == "VBife"){
+        recebe >> valor;
+        VBife = valor;
+    }else if(var == "VMaca"){
+        recebe >> valor;
+        VMaca = valor;
+    }
+}
 
 
 void Reserva::AddAnimal(Animal *a) {
@@ -224,8 +296,10 @@ void Reserva::alimentaAnimal(int num, int nutri, int toxi) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if((*it)->getId() == num){
-            //ALIMENTAR ANIMAL -> EM FALTA!!!
-            cout << "\nALIMENTADO!";
+            (*it)->aumentaSaude(nutri);
+            (*it)->diminuiSaude(toxi);
+            (*it)->diminuiFome(nutri);
+            (*it)->insertHist("user",nutri,toxi);
             ++it;
         }
         else
@@ -237,8 +311,10 @@ void Reserva::alimentaAnimal(int nl, int nc, int nutri, int toxi) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
-            //ALIMENTAR ANIMAL -> EM FALTA!!!
-            cout << "\nALIMENTADO!";
+            (*it)->aumentaSaude(nutri);
+            (*it)->diminuiSaude(toxi);
+            (*it)->diminuiFome(nutri);
+            (*it)->insertHist("user",nutri,toxi);
             ++it;
         }
         else
@@ -312,7 +388,6 @@ void Reserva::movimentaAnimais() {
         auto it = this->animais.begin();
         while (it != this->animais.end()) {
             if ((*it)->getEspecie() == 'c') {
-                //(*it)->movimentoCoelho(NL, NC);
 
                 int direcao = rand() % 4+1;
                 int distancia = rand() % 2+1;
@@ -360,7 +435,6 @@ void Reserva::movimentaAnimais() {
                 }
                 ++it;
             } else if ((*it)->getEspecie() == 'o') {
-                //(*it)->movimentoOvelha(NL, NC);
 
                 int direcao = rand() % 4+1;
                 int distancia = 1;
@@ -400,7 +474,6 @@ void Reserva::movimentaAnimais() {
                 }
                 ++it;
             } else if ((*it)->getEspecie() == 'l') {
-                //(*it)->movimentoLobo(NL, NC);
 
                 int direcao = rand() % 4+1;
                 int distancia = 1;
@@ -441,7 +514,6 @@ void Reserva::movimentaAnimais() {
 
                 ++it;
             } else if ((*it)->getEspecie() == 'g') {
-                //(*it)->movimentoCanguru(NL, NC);
 
                 int direcao = rand() % 4+1;
                 int distancia = 1;
@@ -558,6 +630,8 @@ void Reserva::DiminuiVinstantes() {
             } else if ((*it)->getEspecie() == 'o') {
                 (*it)->diminuiinstantes();
                 if ((*it)->getVidaInstantes() == 0) {
+                    Alimento * tmp = new Corpo('p', (*it)->getMassa(), 0, 9999, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+                    AddAlimento(tmp);
                     animais.erase(it);
                 } else{
                     ++it;
@@ -565,6 +639,8 @@ void Reserva::DiminuiVinstantes() {
             } else if ((*it)->getEspecie() == 'g') {
                 (*it)->diminuiinstantes();
                 if ((*it)->getVidaInstantes() == 0) {
+                    Alimento * tmp = new Corpo('p', 15, 5, 9999, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+                    AddAlimento(tmp);
                     animais.erase(it);
                 } else{
                     ++it;
@@ -572,6 +648,8 @@ void Reserva::DiminuiVinstantes() {
             } else if ((*it)->getEspecie() == 'M') {
                 (*it)->diminuiinstantes();
                 if ((*it)->getVidaInstantes() == 0) {
+                    Alimento * tmp = new Corpo('p', (*it)->getMassa(), 0, 9999, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+                    AddAlimento(tmp);
                     animais.erase(it);
                 } else{
                     ++it;
@@ -580,6 +658,14 @@ void Reserva::DiminuiVinstantes() {
                 ++it;
             }
         }
+    }
+}
+
+void Reserva::AumentaInstantesDecorridosAnimal() {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        (*it)->aumentaInstantesDecorridos();
+        ++it;
     }
 }
 
@@ -595,24 +681,36 @@ void Reserva::verificaSaude() {
                 }
             } else if ((*it)->getEspecie() == 'o') {
                 if ((*it)->getSaude() <= 0) {
+                    Alimento * tmp = new Corpo('p', (*it)->getMassa(), 0, 9999, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+                    AddAlimento(tmp);
                     animais.erase(it);
                 } else{
                     ++it;
                 }
             } else if ((*it)->getEspecie() == 'l') {
                 if ((*it)->getSaude() <= 0) {
+                    Alimento * tmp = new Corpo('p', 10, 0, 9999, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+                    AddAlimento(tmp);
                     animais.erase(it);
                 } else{
                     ++it;
                 }
-            } else if ((*it)->getEspecie() == 'M') {
+            } else if ((*it)->getEspecie() == 'g') {
                 if ((*it)->getSaude() <= 0) {
+                    Alimento * tmp = new Corpo('p', 15, 5, 9999, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+                    AddAlimento(tmp);
                     animais.erase(it);
                 } else{
                     ++it;
                 }
-            } else {
-                ++it;
+            }else if ((*it)->getEspecie() == 'M') {
+                if ((*it)->getSaude() <= 0) {
+                    Alimento * tmp = new Corpo('p', (*it)->getMassa(), 0, 9999, (*it)->getPosLinha(), (*it)->getPosColuna(), newId());
+                    AddAlimento(tmp);
+                    animais.erase(it);
+                } else{
+                    ++it;
+                }
             }
         }
     }
@@ -626,6 +724,524 @@ void Reserva::updateNutriToxiAlimentos() {
             ++it;
         } else {
             ++it;
+        }
+    }
+}
+
+string Reserva::printHistAlimentacaoAnimal(int num) const {
+    ostringstream os;
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if((*it)->getId() == num){
+            return (*it)->printList();
+        }
+        else
+            ++it;
+    }
+    return nullptr;
+}
+
+bool Reserva::verificaOcupacaoEspaco(int nl, int nc) {
+    int conta = 0;
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            conta++;
+        }
+        else
+            ++it;
+    }
+
+    if(conta >= 2)
+        return false;
+    else
+        return true;
+}
+
+void Reserva::FazNascer() {
+
+    std::vector<Animal*>::size_type size = animais.size();
+    for (std::vector<Animal*>::size_type i = 0; i < size; ++i){
+        if(animais[i]->getEspecie() == 'c'){
+            if(animais[i]->getInstantesDecorridos() == 8 || animais[i]->getInstantesDecorridos() == 16 || animais[i]->getInstantesDecorridos() == 24){
+                int probabilidade = rand() % 2+1;
+                if(probabilidade == 1){
+                    int direcao = rand() % 4+1;
+                    int distancia = rand() % 10+1;
+                    int massa = rand() % 4+1;
+                    switch(direcao) {
+                        case 1:
+                            //Anda para cima
+                            if(animais[i]->getPosLinha() == 1){
+                                while (!verificaOcupacaoEspaco(NL - distancia + 1,animais[i]->getPosColuna())){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal *tmp = new Coelho(massa, 0, getSCoelho(), 'c', NL - distancia + 1, animais[i]->getPosColuna(), newId(), getVCoelho());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosLinha() - distancia < 1){
+                                while (!verificaOcupacaoEspaco(NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna())){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna(),newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            } else {
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna())){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna(),newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                        case 2:
+                            //Anda para a direita
+                            if(animais[i]->getPosColuna() == NC){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia)){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha(),distancia,newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosColuna()+distancia > NC){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()))){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()),newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            } else{
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia)){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia,newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                        case 3:
+                            //Anda para baixo
+                            if(animais[i]->getPosLinha() == NL){
+                                while (!verificaOcupacaoEspaco(distancia,animais[i]->getPosColuna())){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',distancia,animais[i]->getPosColuna(),newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosLinha() + distancia > NL){
+                                while (!verificaOcupacaoEspaco(distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna())){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna(),newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            } else {
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna())){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna(),newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                        case 4:
+                            //Anda para a esquerda
+                            if(animais[i]->getPosColuna() == 1){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC-distancia+1)){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha(),NC-distancia+1,newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosColuna()-distancia < 1){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia)){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia,newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            } else{
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia)){
+                                    distancia = rand() % 10+1;
+                                }
+                                Animal * tmp = new Coelho(massa,0,getSCoelho(),'c',animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia,newId(),getVCoelho());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                    }
+                }
+            }
+        }else if(animais[i]->getEspecie() == 'o'){
+            if(animais[i]->getInstantesDecorridos() == 15 || animais[i]->getInstantesDecorridos() == 30){
+                    int direcao = rand() % 4+1;
+                    int distancia = rand() % 12+1;
+                    int massa = rand() % 5 + 4;
+                    switch(direcao) {
+                        case 1:
+                            //Anda para cima
+                            if(animais[i]->getPosLinha() == 1){
+                                while (!verificaOcupacaoEspaco(NL - distancia + 1,animais[i]->getPosColuna())){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal *tmp = new Ovelha(massa, 0,animais[i]->getSaude(), 'o', NL - distancia + 1, animais[i]->getPosColuna(), newId(), getVOvelha());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosLinha() - distancia < 1){
+                                while (!verificaOcupacaoEspaco(NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna())){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna(),newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            } else {
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna())){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna(),newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                        case 2:
+                            //Anda para a direita
+                            if(animais[i]->getPosColuna() == NC){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia)){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha(),distancia,newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosColuna()+distancia > NC){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()))){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()),newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            } else{
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia)){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia,newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                        case 3:
+                            //Anda para baixo
+                            if(animais[i]->getPosLinha() == NL){
+                                while (!verificaOcupacaoEspaco(distancia,animais[i]->getPosColuna())){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',distancia,animais[i]->getPosColuna(),newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosLinha() + distancia > NL){
+                                while (!verificaOcupacaoEspaco(distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna())){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna(),newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            } else {
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna())){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna(),newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                        case 4:
+                            //Anda para a esquerda
+                            if(animais[i]->getPosColuna() == 1){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC-distancia+1)){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha(),NC-distancia+1,newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            } else if(animais[i]->getPosColuna()-distancia < 1){
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia)){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia,newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            } else{
+                                while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia)){
+                                    distancia = rand() % 12+1;
+                                }
+                                Animal * tmp = new Ovelha(massa,0,animais[i]->getSaude(),'o',animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia,newId(),getVOvelha());
+                                AddAnimal(tmp);
+                            }
+                            break;
+                    }
+            }
+        }else if(animais[i]->getEspecie() == 'l'){
+            if(animais[i]->getInstantesDecorridos() == 14){
+                int direcao = rand() % 4+1;
+                int distancia = rand() % 15+1;
+                switch(direcao) {
+                    case 1:
+                        //Anda para cima
+                        if(animais[i]->getPosLinha() == 1){
+                            while (!verificaOcupacaoEspaco(NL - distancia + 1,animais[i]->getPosColuna())){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal *tmp = new Lobo(getPLobo(), 0,getSLobo(), 'l', NL - distancia + 1, animais[i]->getPosColuna(), newId(), getSLobo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosLinha() - distancia < 1){
+                            while (!verificaOcupacaoEspaco(NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna())){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna(),newId(),getSLobo());
+                            AddAnimal(tmp);
+                        } else {
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna(),newId(),getSLobo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 2:
+                        //Anda para a direita
+                        if(animais[i]->getPosColuna() == NC){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia)){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha(),distancia,newId(),getSLobo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosColuna()+distancia > NC){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()))){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()),newId(),getSLobo());
+                            AddAnimal(tmp);
+                        } else{
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia)){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia,newId(),getSLobo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 3:
+                        //Anda para baixo
+                        if(animais[i]->getPosLinha() == NL){
+                            while (!verificaOcupacaoEspaco(distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',distancia,animais[i]->getPosColuna(),newId(),getSLobo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosLinha() + distancia > NL){
+                            while (!verificaOcupacaoEspaco(distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna())){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna(),newId(),getSLobo());
+                            AddAnimal(tmp);
+                        } else {
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna(),newId(),getSLobo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 4:
+                        //Anda para a esquerda
+                        if(animais[i]->getPosColuna() == 1){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC-distancia+1)){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha(),NC-distancia+1,newId(),getSLobo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosColuna()-distancia < 1){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia)){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia,newId(),getSLobo());
+                            AddAnimal(tmp);
+                        } else{
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia)){
+                                distancia = rand() % 15+1;
+                            }
+                            Animal * tmp = new Lobo(getPLobo(),0,getSLobo(),'l',animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia,newId(),getSLobo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                }
+            }
+        }else if(animais[i]->getEspecie() == 'g'){
+            if(animais[i]->getInstantesDecorridos() == 30 || animais[i]->getInstantesDecorridos() == 60){
+                int direcao = rand() % 4+1;
+                int distancia = rand() % 3+1;
+                switch(direcao) {
+                    case 1:
+                        //Anda para cima
+                        if(animais[i]->getPosLinha() == 1){
+                            while (!verificaOcupacaoEspaco(NL - distancia + 1,animais[i]->getPosColuna())){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal *tmp = new Canguru(getPCanguru(), 0,getSCanguru(), 'g', NL - distancia + 1, animais[i]->getPosColuna(), newId(), getVCanguru());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosLinha() - distancia < 1){
+                            while (!verificaOcupacaoEspaco(NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna())){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna(),newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        } else {
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna(),newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 2:
+                        //Anda para a direita
+                        if(animais[i]->getPosColuna() == NC){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia)){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha(),distancia,newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosColuna()+distancia > NC){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()))){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()),newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        } else{
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia)){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia,newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 3:
+                        //Anda para baixo
+                        if(animais[i]->getPosLinha() == NL){
+                            while (!verificaOcupacaoEspaco(distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',distancia,animais[i]->getPosColuna(),newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosLinha() + distancia > NL){
+                            while (!verificaOcupacaoEspaco(distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna())){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna(),newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        } else {
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna(),newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 4:
+                        //Anda para a esquerda
+                        if(animais[i]->getPosColuna() == 1){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC-distancia+1)){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha(),NC-distancia+1,newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosColuna()-distancia < 1){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia)){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia,newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        } else{
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia)){
+                                distancia = rand() % 3+1;
+                            }
+                            Animal * tmp = new Canguru(getPCanguru(),0,getSCanguru(),'g',animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia,newId(),getVCanguru());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                }
+            }
+        }else if(animais[i]->getEspecie() == 'M'){
+            if(animais[i]->getInstantesDecorridos() == 20){
+                int direcao = rand() % 4+1;
+                int distancia = rand() % 5+1;
+                switch(direcao) {
+                    case 1:
+                        //Anda para cima
+                        if(animais[i]->getPosLinha() == 1){
+                            while (!verificaOcupacaoEspaco(NL - distancia + 1,animais[i]->getPosColuna())){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(), 'M', NL - distancia + 1, animais[i]->getPosColuna(), newId(), getVCavalo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosLinha() - distancia < 1){
+                            while (!verificaOcupacaoEspaco(NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna())){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',NL-(animais[i]->getPosLinha() - distancia),animais[i]->getPosColuna(),newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        } else {
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha()-distancia,animais[i]->getPosColuna(),newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 2:
+                        //Anda para a direita
+                        if(animais[i]->getPosColuna() == NC){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia)){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha(),distancia,newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosColuna()+distancia > NC){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()))){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha(),distancia-(NC-animais[i]->getPosColuna()),newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        } else{
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia)){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha(),animais[i]->getPosColuna()+distancia,newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 3:
+                        //Anda para baixo
+                        if(animais[i]->getPosLinha() == NL){
+                            while (!verificaOcupacaoEspaco(distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',distancia,animais[i]->getPosColuna(),newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosLinha() + distancia > NL){
+                            while (!verificaOcupacaoEspaco(distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna())){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',distancia-(NL-animais[i]->getPosLinha()),animais[i]->getPosColuna(),newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        } else {
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna())){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha()+distancia,animais[i]->getPosColuna(),newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                    case 4:
+                        //Anda para a esquerda
+                        if(animais[i]->getPosColuna() == 1){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC-distancia+1)){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha(),NC-distancia+1,newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        } else if(animais[i]->getPosColuna()-distancia < 1){
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia)){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha(),NC+animais[i]->getPosColuna()-distancia,newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        } else{
+                            while (!verificaOcupacaoEspaco(animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia)){
+                                distancia = rand() % 5+1;
+                            }
+                            Animal * tmp = new Cavalo(getPCavalo(),0,getSCavalo(),'M',animais[i]->getPosLinha(),animais[i]->getPosColuna()-distancia,newId(),getVCavalo());
+                            AddAnimal(tmp);
+                        }
+                        break;
+                }
+            }
         }
     }
 }

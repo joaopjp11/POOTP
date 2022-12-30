@@ -23,6 +23,8 @@ vector
 C:/Users/joaop/CLionProjects/POOTP/Animal.h
 Alimento.h
 C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+Historico.h
+C:/Users/joaop/CLionProjects/POOTP/Historico.h
 sstream
 -
 string
@@ -59,6 +61,18 @@ C:/Users/joaop/CLionProjects/POOTP/Animal.h
 C:/Users/joaop/CLionProjects/POOTP/Corpo.h
 Alimento.h
 C:/Users/joaop/CLionProjects/POOTP/Alimento.h
+
+C:/Users/joaop/CLionProjects/POOTP/Historico.h
+sstream
+-
+string
+-
+fstream
+-
+iostream
+-
+cstdlib
+-
 
 C:/Users/joaop/CLionProjects/POOTP/Lobo.h
 Animal.h

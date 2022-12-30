@@ -2,6 +2,7 @@
 #define POOTP_ANIMAL_H
 
 #include "Alimento.h"
+#include "Historico.h"
 
 #include <sstream>
 #include <string>
@@ -26,10 +27,16 @@ public:
     int getPosColuna() const{return poscoluna;} //Get posição coluna
     int getVidaInstantes() const{return vidainstantes;} //Get instantes que o animal fica vivo
     int getId() const{return idAnimal;} //get Id
+    int getInstantesDecorridos() const {return instantesDecorridos;} //Get instantes decorridos na vida de um animal
+    void aumentaInstantesDecorridos(); //Incrementa o numero de instantes já vividos pelo animal
     virtual void aumentaFome(); //Aumenta a fome do animal
-    void diminuiSaude(int num);
-    void diminuiinstantes();
+    void aumentaSaude(int num); //Incrementa a fome
+    void diminuiSaude(int num); //Decrementa a saude
+    void diminuiFome(int num); //Decrementa a fome
+    void diminuiinstantes(); //Diminui os instantes de vida que sobram para cada animal
     virtual string getAsString() const; //Descrição do animal
+    void insertHist(string n, int nutri, int tox); //Insere alimento no histórico de alimentação
+    string printList(); //Devolve a descrição do histórico de alimentação
 
 protected:
     int massa;
@@ -40,6 +47,8 @@ protected:
     int poscoluna;
     int vidainstantes;
     int idAnimal;
+    Historico * hist;
+    int instantesDecorridos;
 };
 
 

@@ -7,7 +7,8 @@ CMakeFiles/POOTP.dir/Alimento.cpp.obj: \
 CMakeFiles/POOTP.dir/Animal.cpp.obj: \
  ../Alimento.h \
  ../Animal.cpp \
- ../Animal.h
+ ../Animal.h \
+ ../Historico.h
 CMakeFiles/POOTP.dir/Bife.cpp.obj: \
  ../Alimento.h \
  ../Bife.cpp \
@@ -16,12 +17,14 @@ CMakeFiles/POOTP.dir/Canguru.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
  ../Canguru.cpp \
- ../Canguru.h
+ ../Canguru.h \
+ ../Historico.h
 CMakeFiles/POOTP.dir/Cavalo.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
  ../Cavalo.cpp \
- ../Cavalo.h
+ ../Cavalo.h \
+ ../Historico.h
 CMakeFiles/POOTP.dir/Cenoura.cpp.obj: \
  ../Alimento.h \
  ../Cenoura.cpp \
@@ -30,11 +33,15 @@ CMakeFiles/POOTP.dir/Coelho.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
  ../Coelho.cpp \
- ../Coelho.h
+ ../Coelho.h \
+ ../Historico.h
 CMakeFiles/POOTP.dir/Corpo.cpp.obj: \
  ../Alimento.h \
  ../Corpo.cpp \
  ../Corpo.h
+CMakeFiles/POOTP.dir/Historico.cpp.obj: \
+ ../Historico.cpp \
+ ../Historico.h
 CMakeFiles/POOTP.dir/Jogo.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
@@ -44,6 +51,7 @@ CMakeFiles/POOTP.dir/Jogo.cpp.obj: \
  ../Cenoura.h \
  ../Coelho.h \
  ../Corpo.h \
+ ../Historico.h \
  ../Jogo.cpp \
  ../Jogo.h \
  ../Lobo.h \
@@ -54,6 +62,7 @@ CMakeFiles/POOTP.dir/Jogo.cpp.obj: \
 CMakeFiles/POOTP.dir/Lobo.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
+ ../Historico.h \
  ../Lobo.cpp \
  ../Lobo.h
 CMakeFiles/POOTP.dir/Maca.cpp.obj: \
@@ -63,6 +72,7 @@ CMakeFiles/POOTP.dir/Maca.cpp.obj: \
 CMakeFiles/POOTP.dir/Ovelha.cpp.obj: \
  ../Alimento.h \
  ../Animal.h \
+ ../Historico.h \
  ../Ovelha.cpp \
  ../Ovelha.h
 CMakeFiles/POOTP.dir/Relva.cpp.obj: \
@@ -78,6 +88,7 @@ CMakeFiles/POOTP.dir/Reserva.cpp.obj: \
  ../Cenoura.h \
  ../Coelho.h \
  ../Corpo.h \
+ ../Historico.h \
  ../Lobo.h \
  ../Maca.h \
  ../Ovelha.h \
@@ -93,6 +104,7 @@ CMakeFiles/POOTP.dir/Simulador.cpp.obj: \
  ../Cenoura.h \
  ../Coelho.h \
  ../Corpo.h \
+ ../Historico.h \
  ../Jogo.h \
  ../Lobo.h \
  ../Maca.h \
@@ -116,6 +128,7 @@ CMakeFiles/POOTP.dir/main.cpp.obj: \
  ../Cenoura.h \
  ../Coelho.h \
  ../Corpo.h \
+ ../Historico.h \
  ../Jogo.h \
  ../Lobo.h \
  ../Maca.h \

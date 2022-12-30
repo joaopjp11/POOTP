@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/POOTP.dir/Cenoura.cpp.obj"
   "CMakeFiles/POOTP.dir/Coelho.cpp.obj"
   "CMakeFiles/POOTP.dir/Corpo.cpp.obj"
+  "CMakeFiles/POOTP.dir/Historico.cpp.obj"
   "CMakeFiles/POOTP.dir/Jogo.cpp.obj"
   "CMakeFiles/POOTP.dir/Lobo.cpp.obj"
   "CMakeFiles/POOTP.dir/Maca.cpp.obj"

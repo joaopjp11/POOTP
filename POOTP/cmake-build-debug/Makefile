@@ -320,6 +320,30 @@ Corpo.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Corpo.cpp.s
 .PHONY : Corpo.cpp.s
 
+Historico.obj: Historico.cpp.obj
+.PHONY : Historico.obj
+
+# target to build an object file
+Historico.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Historico.cpp.obj
+.PHONY : Historico.cpp.obj
+
+Historico.i: Historico.cpp.i
+.PHONY : Historico.i
+
+# target to preprocess a source file
+Historico.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Historico.cpp.i
+.PHONY : Historico.cpp.i
+
+Historico.s: Historico.cpp.s
+.PHONY : Historico.s
+
+# target to generate assembly for a file
+Historico.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POOTP.dir\build.make CMakeFiles/POOTP.dir/Historico.cpp.s
+.PHONY : Historico.cpp.s
+
 Jogo.obj: Jogo.cpp.obj
 .PHONY : Jogo.obj
 
@@ -569,6 +593,9 @@ help:
 	@echo ... Corpo.obj
 	@echo ... Corpo.i
 	@echo ... Corpo.s
+	@echo ... Historico.obj
+	@echo ... Historico.i
+	@echo ... Historico.s
 	@echo ... Jogo.obj
 	@echo ... Jogo.i
 	@echo ... Jogo.s

@@ -128,6 +128,12 @@
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Corpo.h">
 			<Option target="POOTP"/>
 		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Historico.cpp">
+			<Option target="POOTP"/>
+		</Unit>
+		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Historico.h">
+			<Option target="POOTP"/>
+		</Unit>
 		<Unit filename="C:/Users/joaop/CLionProjects/POOTP/Jogo.cpp">
 			<Option target="POOTP"/>
 		</Unit>
