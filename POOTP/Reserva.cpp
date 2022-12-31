@@ -346,16 +346,18 @@ string Reserva::listPosicao(int nl, int nc) const {
     return os.str();
 }
 
-void Reserva::ComandoAnim() const {
+string Reserva::ComandoAnim() const {
+    ostringstream os;
     if(animais.empty())
-        cout << "Sem animais!\n";
+        os << "Sem animais!\n";
     else {
         auto it = this->animais.begin();
         while (it != this->animais.end()) {
-            cout << "\nId: " << (*it)->getId() << " Especie: " << (*it)->getEspecie() << " Saude: " << (*it)->getSaude();
+            os << "Id: " << (*it)->getId() << " Especie: " << (*it)->getEspecie() << " Saude: " << (*it)->getSaude() << "\n";
             ++it;
         }
     }
+    return os.str();
 }
 
 char Reserva::especieAnimal(int nl, int nc) const{
@@ -753,6 +755,23 @@ bool Reserva::verificaOcupacaoEspaco(int nl, int nc) {
     }
 
     if(conta >= 2)
+        return false;
+    else
+        return true;
+}
+
+bool Reserva::verificaOcupacaoEspacoAlimento(int nl, int nc) {
+    int conta = 0;
+    auto it = this->alimentos.begin();
+    while(it != this->alimentos.end()){
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            conta++;
+        }
+        else
+            ++it;
+    }
+
+    if(conta >= 1)
         return false;
     else
         return true;
@@ -1244,4 +1263,102 @@ void Reserva::FazNascer() {
             }
         }
     }
+
+    std::vector<Alimento*>::size_type sizeAlimento = alimentos.size();
+    for (std::vector<Alimento*>::size_type i = 0; i < sizeAlimento; ++i){
+        if(alimentos[i]->getTipo() == 'r'){
+            if(alimentos[i]->getDuracao() == getVRelva()/4){
+                int direcao = rand() % 4+1;
+                int distancia = rand() % 5+4;
+                switch (direcao) {
+                    case 1:
+                        //Anda para cima
+                        if(alimentos[i]->getPosLinha() == 1){
+                            if(verificaOcupacaoEspacoAlimento(NL - distancia + 1,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), NL - distancia + 1,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosLinha() - distancia < 1){
+                            if(verificaOcupacaoEspacoAlimento(NL-(alimentos[i]->getPosLinha() - distancia),alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), NL-(alimentos[i]->getPosLinha() - distancia),alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else {
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha()-distancia,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha()-distancia,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                    case 2:
+                        //Anda para a direita
+                        if(alimentos[i]->getPosColuna() == NC){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosColuna()+distancia > NC){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),distancia-(NC-alimentos[i]->getPosColuna()))){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),distancia-(NC-alimentos[i]->getPosColuna()), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else{
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()+distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()+distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                    case 3:
+                        //Anda para baixo
+                        if(alimentos[i]->getPosLinha() == NL){
+                            if(verificaOcupacaoEspacoAlimento(distancia,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), distancia,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosLinha() + distancia > NL){
+                            if(verificaOcupacaoEspacoAlimento(distancia-(NL-alimentos[i]->getPosLinha()),alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), distancia-(NL-alimentos[i]->getPosLinha()),alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else {
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha()+distancia,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha()+distancia,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                    case 4:
+                        //Anda para a esquerda
+                        if(alimentos[i]->getPosColuna() == 1){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),NC-distancia+1)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),NC-distancia+1, newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosColuna()-distancia < 1){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),NC+alimentos[i]->getPosColuna()-distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),NC+alimentos[i]->getPosColuna()-distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        } else{
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()-distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()-distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+    }
+}
+
+int Reserva::TotalAnimais() {
+    int conta = animais.size();
+    return conta;
+}
+
+int Reserva::TotalAlimentos() {
+    int conta = alimentos.size();
+    return conta;
 }

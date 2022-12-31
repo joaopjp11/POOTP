@@ -4,6 +4,15 @@ void Jogo::incrementaInstante(int num, int pausa) {
     instante += num;
 }
 
+string Jogo::DetalhesJogo() {
+    ostringstream os;
+    os << "Instante: " << instante << "\n";
+    os << "Total de Animais: " << getReserva()->TotalAnimais() << "\n";
+    os << "Total de Alimentos: " << getReserva()->TotalAlimentos() << "\n";
+    os << "Coordenadas: " << "POR IMPLEMENTAR" << "\n";
+    return os.str();
+}
+
 void Store::storeJogo(Jogo *aux) {
     JogosGuardados.push_back(aux);
 }

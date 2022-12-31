@@ -20,6 +20,7 @@ public:
     void setNomeJogo(string nome){nomeJogo = nome;} //Declara nome do jogo(save)
     string getNomeJogo() const{return nomeJogo;} //Obtem nome do jogo(save)
     void incrementaInstante(int num, int pausa=0); //Incrementa o nº de instantes
+    string DetalhesJogo();
     Jogo& operator=(const Jogo& aux) //Operador "="
     {
         nomeJogo = aux.nomeJogo;

@@ -29,13 +29,14 @@ void Simulador::comecaSimulador() {
     mostraReservaInicial(jogo);
 
     do{
-        Comando << "Comando(help):";
+        Comando << "Comando:";
         Comando >> comando;
         //cout << "\nComando(help):";
         //getline(cin,comando);
         istringstream iss(comando);
         StatusComandos << validaComando(jogo, jogos, iss);
         StatusComandos.clear();
+        //Detalhes << jogo.DetalhesJogo();
         Detalhes << jogo.getReserva()->getAsString();
         Detalhes.clear();
         Comando.clear();
@@ -450,10 +451,10 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
         }
 
     }else if(com == "anim"){
-        jogo.getReserva()->ComandoAnim();
+        return jogo.getReserva()->ComandoAnim();
 
     }else if(com == "visanim"){
-        return "Comando valido!";
+        return "Por Implementar!";
 
     }else if(com == "store"){
         recebe >> nome;
@@ -471,8 +472,8 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
         if(recebe.fail()){
             return "Comando invalido!";
         }else{
-            /*Jogo* guardado = jogos.encontraJogo(nome);
-            jogo.operator=(*guardado);*/
+            //Jogo* guardado = jogos.encontraJogo(nome);
+            //jogo.operator=(*guardado);
             return "Por implementar";
         }
 

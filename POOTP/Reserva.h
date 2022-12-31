@@ -63,7 +63,7 @@ public:
     void alimentaAnimal(int num, int nutri, int toxi); //Alimenta um animal com Id = num
     void alimentaAnimal(int nl, int nc, int nutri, int toxi); //Alimenta animal/animais na posicao (linha=nl, coluna=nc)
     string listPosicao(int nl, int nc)const; //Faz descrição da posição (linha=nl, coluna=nc)
-    void ComandoAnim() const; //Mostra o Id, Especie e Saude para todos os animais na reserva
+    string ComandoAnim() const; //Mostra o Id, Especie e Saude para todos os animais na reserva
     char especieAnimal(int nl, int nc) const;
     char tipoAlimento(int nl, int nc) const;
     void movimentaAnimais(); //Lança as funções responsáveis pelos movimentos de cada especie de animal
@@ -75,7 +75,10 @@ public:
     void updateNutriToxiAlimentos();
     string printHistAlimentacaoAnimal(int num) const;
     bool verificaOcupacaoEspaco(int nl, int nc);
+    bool verificaOcupacaoEspacoAlimento(int nl, int nc);
     void FazNascer();
+    int TotalAnimais();
+    int TotalAlimentos();
 
 private:
     int NL; //Nº de linhas

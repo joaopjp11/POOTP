@@ -1,7 +1,6 @@
-animal a 1 6
-kill 12 2
+animal c 1 6
+animal M 10 10
 killid 1
-info 1
-n
-anim
-visanim
+info 2
+
+
