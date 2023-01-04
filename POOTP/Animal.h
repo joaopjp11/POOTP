@@ -20,6 +20,7 @@ public:
     void setPoslinha(int nl){poslinha = nl;} //Set posição linha
     void setPoscoluna(int nc){poscoluna = nc;} //Set posição coluna
     int getMassa() const{return massa;} //Get massa
+    void setMassa(int num){this->massa = num;} //Set massa
     int getFome() const{return fome;} //Get fome
     int getSaude() const{return saude;} //Get saude
     char getEspecie() const{return especie;} //Get especia
@@ -43,18 +44,12 @@ protected:
     int fome;
     int saude;
     char especie;
-    int poslinha;
-    int poscoluna;
-    int vidainstantes;
+    int poslinha; //Linha onde se encontra
+    int poscoluna; //Coluna onde se encontra
+    int vidainstantes; //Limite de instantes que o animal pode viver
     int idAnimal;
-    Historico * hist;
-    int instantesDecorridos;
-};
-
-
-class Especial : public Animal{
-public:
-
+    Historico * hist; //Histórico de alimentação
+    int instantesDecorridos; //Nº de instantes decorridos desde que este animal apareceu
 };
 
 #endif //POOTP_ANIMAL_H

@@ -5,9 +5,9 @@
 
 class Coelho : public Animal{
 public:
-    Coelho(int massa, int fome, int saude, char especie, int poslinha, int poscoluna, int idAnimal, int vidainstantes);
-    ~Coelho() override = default;
-    void aumentaFome() override;
+    Coelho(int massa, int fome, int saude, char especie, int poslinha, int poscoluna, int idAnimal, int vidainstantes); //Construtor
+    ~Coelho() override = default; //Destrutor
+    void aumentaFome() override; //Função que vai aumentar a fome do animal com o passar de cada instante
 };
 
 

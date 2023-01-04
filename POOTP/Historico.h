@@ -9,14 +9,14 @@
 
 using namespace std;
 
-class Historico {
+class Historico { //Representa cada elemento do histórico de alimentação dos animais
 public:
-    Historico(string n, int nutri, int toxi);
-    ~Historico() = default;
-    string nome;
-    int nutricao;
-    int toxicidade;
-    Historico* next;
+    Historico(string n, int nutri, int toxi); //Construtor
+    ~Historico() = default; //Destrutor
+    string nome; //nome
+    int nutricao; //valor nutricional
+    int toxicidade; //valor de toxicidade
+    Historico* next; //Ponteiro para o próximo elemento do histórico
 };
 
 

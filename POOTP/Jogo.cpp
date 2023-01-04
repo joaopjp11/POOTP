@@ -13,6 +13,13 @@ string Jogo::DetalhesJogo() {
     return os.str();
 }
 
+Jogo &Jogo::operator=(const Jogo &aux) {
+    nomeJogo = aux.nomeJogo;
+    Reserva newreserva(*aux.reserva);
+    instante = aux.instante;
+    return *this;
+}
+
 void Store::storeJogo(Jogo *aux) {
     JogosGuardados.push_back(aux);
 }
