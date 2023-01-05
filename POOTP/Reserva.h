@@ -23,7 +23,7 @@ using namespace std;
 class Reserva {
 public:
     Reserva(int nl, int nc); //Construtor
-    Reserva(const Reserva &obj);
+    Reserva(const Reserva &obj); //Construtor por cópia
     ~Reserva(); //Destrutor
     //Obtem variáveis constantes - que serão declaradas no ficheiro constantes.txt
     int getSCoelho() const{return SCoelho;}
@@ -60,22 +60,29 @@ public:
     void mataAnimal(int num); //Mata animal por Id
     void mataAnimal(int nl, int nc); //Mata animal numa dada posição
     bool removeAlimento(int num); //Remove alimento por Id
-    void alimentaAnimal(int num, int nutri, int toxi); //Alimenta um animal com Id = num
+    void alimentaAnimal(int num, int nutri, int toxi, char t = 0); //Alimenta um animal com Id = num
     void alimentaAnimal(int nl, int nc, int nutri, int toxi); //Alimenta animal/animais na posicao (linha=nl, coluna=nc)
     string listPosicao(int nl, int nc)const; //Faz descrição da posição (linha=nl, coluna=nc)
-    void ComandoAnim() const; //Mostra o Id, Especie e Saude para todos os animais na reserva
-    char especieAnimal(int nl, int nc) const;
-    char tipoAlimento(int nl, int nc) const;
+    string ComandoAnim() const; //Mostra o Id, Especie e Saude para todos os animais na reserva
+    char especieAnimal(int nl, int nc) const; //Retorna a especie de animal na posição nl x nc
+    char tipoAlimento(int nl, int nc) const; //Retorna o tipo de alimento na posição nl x nc
     void movimentaAnimais(); //Lança as funções responsáveis pelos movimentos de cada especie de animal
     void AumentaFomeAnimais(); //Aumenta a fome dos animais na reserva
     void DiminuiDuracaoAlimentos(); //Diminui a duracao dos alimentos na reserva
     void DiminuiVinstantes(); //Diminui os instantes de vida limite de cada animal
     void AumentaInstantesDecorridosAnimal(); //Aumenta o nº de instantes vividos por cada animal
     void verificaSaude(); //Verifica se o animal ainda está vivo, caso contrário é removido da reserva
-    void updateNutriToxiAlimentos();
-    string printHistAlimentacaoAnimal(int num) const;
-    bool verificaOcupacaoEspaco(int nl, int nc);
-    void FazNascer();
+    void updateNutriToxiAlimentos(); //Atualiza o valor da nutrição e toxicidade de cada alimento
+    string printHistAlimentacaoAnimal(int num) const; //print historico de alimentação de um animal com id = num - Função utilizada apenas para teste
+    bool verificaOcupacaoEspaco(int nl, int nc); //Verifica se a posição ainda tem espaço para animais
+    bool verificaOcupacaoEspacoAlimento(int nl, int nc); //Verifica se a posição ainda tem espaço para um alimento
+    void FazNascer(); //Responsavel por fazer nascer novos animais a partir de animais já existentes
+    int TotalAnimais(); //Conta o total de animais
+    int TotalAlimentos(); //Conta o total de alimentos
+    int numElementosPorPosicao(int nl, int nc);
+    string CheiroDoAlimento(int nl, int nc);
+    //bool animalSegueAlimento(int num);
+    bool EncontraAnimalPesado(int num, int nl, int nc, int m) const;
 
 private:
     int NL; //Nº de linhas

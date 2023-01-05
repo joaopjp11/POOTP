@@ -8,4 +8,10 @@ string Relva::getAsString() const {
     return os.str();
 }
 
+string Relva::getCheiro() const {
+    ostringstream os;
+    os << cheiro[0] << " " << cheiro[1];
+    return os.str();
+}
+
 

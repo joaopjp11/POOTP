@@ -26,85 +26,77 @@ void Simulador::comecaSimulador() {
     Window Detalhes = Window(65, 0, 50, 24, true);
     Window StatusComandos = Window(65, 24, 50, 6, true);
 
-    mostraReservaInicial(jogo);
+    mostraReservaInicial(jogo, ViewReserva);
+
 
     do{
-        Comando << "Comando(help):";
+        ViewReserva.clear();
+        Comando << "Comando:";
         Comando >> comando;
-        //cout << "\nComando(help):";
-        //getline(cin,comando);
         istringstream iss(comando);
-        StatusComandos << validaComando(jogo, jogos, iss);
+        StatusComandos << validaComando(jogo, jogos, iss, ViewReserva);
         StatusComandos.clear();
-        Detalhes << jogo.getReserva()->getAsString();
+        mostraReserva(jogo, ViewReserva);
+        Detalhes << jogo.DetalhesJogo();
+        //Detalhes << jogo.getReserva()->getAsString();
         Detalhes.clear();
         Comando.clear();
 
     }while(comando != "exit");
 }
 
-void Simulador::mostraReservaInicial(Jogo &jogo) {
+void Simulador::mostraReservaInicial(Jogo &jogo, Window &ViewReserva) {
     int linhas = jogo.getReserva()->getLinhas();
     int colunas = jogo.getReserva()->getColunas();
     int i = 0;
     int j = 0;
 
-    for(i=0;i<linhas+2;i++){
-        cout << "|";
+    //Dimensões da ViewReserva - 22 Linhas x 58 Colunas
+    /*for(i=0;i<linhas+2;i++){
+        ViewReserva << "|";
         if(i == 0){
             for(j=0;j<colunas;j++){
-                cout << "|";
+                ViewReserva << "|";
             }
         }
         else if(i == linhas+1){
             for(j=0;j<colunas;j++){
-                cout << "|";
+                ViewReserva << "|";
             }
         }
         else {
             for(j=1;j<colunas+1;j++){
-                cout << " ";
+                ViewReserva << " ";
             }
         }
-        cout << "|" << endl;
-    }
+        ViewReserva << "|" << '\n';
+    }*/
 }
 
-void Simulador::mostraReserva(Jogo &jogo) {
+void Simulador::mostraReserva(Jogo &jogo,Window &ViewReserva) {
     int linhas = jogo.getReserva()->getLinhas();
     int colunas = jogo.getReserva()->getColunas();
     int i = 0;
     int j = 0;
 
-    for(i=0;i<linhas+2;i++){
-        cout << "|";
-        if(i == 0){
-            for(j=0;j<colunas;j++){
-                cout << "|";
-            }
-        }
-        else if(i == linhas+1){
-            for(j=0;j<colunas;j++){
-                cout << "|";
-            }
-        }
-        else {
+    //Dimensões da ViewReserva - 22 Linhas x 58 Colunas
+    for(i=1;i<linhas+1;i++){
             for(j=1;j<colunas+1;j++){
-                if(jogo.getReserva()->verificaLinhaColunaAnimal(i,j))
-                    cout << jogo.getReserva()->especieAnimal(i,j);
+                if(jogo.getReserva()->numElementosPorPosicao(i,j) > 1){
+                    ViewReserva << "*";
+                }else if(jogo.getReserva()->verificaLinhaColunaAnimal(i,j)) {
+                    ViewReserva << jogo.getReserva()->especieAnimal(i, j);
 
-                if(jogo.getReserva()->verificaLinhaColunaAlimento(i,j))
-                    cout << jogo.getReserva()->tipoAlimento(i,j);
+                }else if(jogo.getReserva()->verificaLinhaColunaAlimento(i,j)) {
+                    ViewReserva << jogo.getReserva()->tipoAlimento(i, j);
 
-                if(!jogo.getReserva()->verificaLinhaColunaAnimal(i,j) && !jogo.getReserva()->verificaLinhaColunaAlimento(i,j))
-                    cout << " ";
+                }else if(!jogo.getReserva()->verificaLinhaColunaAnimal(i,j) && !jogo.getReserva()->verificaLinhaColunaAlimento(i,j))
+                    ViewReserva << " ";
             }
-        }
-        cout << "|" << endl;
     }
 }
 
-string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe) {
+string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe,Window &ViewReserva) {
     int linha;
     int coluna;
     int id;
@@ -450,10 +442,10 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
         }
 
     }else if(com == "anim"){
-        jogo.getReserva()->ComandoAnim();
+        return jogo.getReserva()->ComandoAnim();
 
     }else if(com == "visanim"){
-        return "Comando valido!";
+        return "Por Implementar!";
 
     }else if(com == "store"){
         recebe >> nome;
@@ -471,14 +463,14 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
         if(recebe.fail()){
             return "Comando invalido!";
         }else{
-            /*Jogo* guardado = jogos.encontraJogo(nome);
-            jogo.operator=(*guardado);*/
+            Jogo* guardado = jogos.encontraJogo(nome);
+            jogo = *guardado;
             return "Por implementar";
         }
 
     }else if(com == "load"){
         recebe >> ficheiro;
-        if(leficheiro(jogo, jogos, ficheiro)){
+        if(leficheiro(jogo, jogos, ficheiro, ViewReserva)){
             return "Ficheiro de comandos lido com sucesso!";
         }
         else{
@@ -490,6 +482,22 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
         if(recebe.fail()){
             return "Comando invalido!";
         }else{
+            /*
+            string s;
+            ViewReserva >> s;
+            if (s == "KEY_UP") {
+                if( y>0 ) y--;
+            }
+            if (s == "KEY_DOWN") {
+                if( y<t.getNumRows()-5 ) y++;
+            }
+            if (s == "KEY_LEFT") {
+                if( x>0 ) x--;
+            }
+            if (s == "KEY_RIGHT") {
+                if( x<t.getNumCols()-30 ) x++;
+            }
+             */
             return "Comando valido!";
         }
 
@@ -504,7 +512,7 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe)
     return "Comando invalido!";
 }
 
-bool Simulador::leficheiro(Jogo &jogo, Store &jogos, const string ficheiro) {
+bool Simulador::leficheiro(Jogo &jogo, Store &jogos, const string ficheiro,Window &ViewReserva) {
     ifstream comandos;
     string aux;
     comandos.open(ficheiro);
@@ -513,7 +521,7 @@ bool Simulador::leficheiro(Jogo &jogo, Store &jogos, const string ficheiro) {
         while(getline(comandos, aux))
         {
             istringstream recebe(aux);
-            validaComando(jogo, jogos, recebe);
+            validaComando(jogo, jogos, recebe, ViewReserva);
         }
         comandos.close();
         return true;

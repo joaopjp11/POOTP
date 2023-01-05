@@ -23,21 +23,16 @@ public:
     int getId() const{return idAlimento;} //Get Id do alimento
     void diminuiDuracao(); //Diminui a duração de vida do alimento
     virtual string getAsString() const; //Descrição do alimento
-    virtual void AtualizaNutriToxi(){}; //Caso defeult
+    virtual void AtualizaNutriToxi(){}; //Caso default
+    virtual string getCheiro() const{return nullptr;}
 protected:
     char tipo;
     int valornutritivo;
     int toxicidade;
     int duracao;
-    int poslinha;
-    int poscoluna;
+    int poslinha; //Linha onde se encontra
+    int poscoluna; //Coluna onde se encontra
     int idAlimento;
 };
-
-class Misterio : public Alimento{
-public:
-
-};
-
 
 #endif //POOTP_ALIMENTO_H

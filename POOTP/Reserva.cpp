@@ -23,6 +23,17 @@ Reserva::Reserva(const Reserva &obj) {
     this->VBife = obj.VBife;
     this->VMaca = obj.VMaca;
 
+    auto b = this->animais.begin();
+    while(b < this->animais.end()){
+        this->animais.erase(b);
+        ++b;
+    }
+    auto a = this->alimentos.begin();
+    while(a < this->alimentos.end()){
+        this->alimentos.erase(a);
+        ++a;
+    }
+
     auto it = obj.animais.begin();
     while (it < obj.animais.end()){
         this->AddAnimal(new Animal(**it));
@@ -292,14 +303,26 @@ bool Reserva::removeAlimento(int num) {
     return false;
 }
 
-void Reserva::alimentaAnimal(int num, int nutri, int toxi) {
+void Reserva::alimentaAnimal(int num, int nutri, int toxi, char t) {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         if((*it)->getId() == num){
             (*it)->aumentaSaude(nutri);
             (*it)->diminuiSaude(toxi);
             (*it)->diminuiFome(nutri);
-            (*it)->insertHist("user",nutri,toxi);
+            if(t == 'r'){
+                (*it)->insertHist("relva", nutri, toxi);
+            } else if(t == 't'){
+                (*it)->insertHist("cenoura", nutri, toxi);
+            } else if(t == 'b'){
+                (*it)->insertHist("bife", nutri, toxi);
+            } else if(t == 'p'){
+                (*it)->insertHist("corpo", nutri, toxi);
+            } else if(t == 'a'){
+                (*it)->insertHist("maca", nutri, toxi);
+            } else {
+                (*it)->insertHist("user", nutri, toxi);
+            }
             ++it;
         }
         else
@@ -346,16 +369,18 @@ string Reserva::listPosicao(int nl, int nc) const {
     return os.str();
 }
 
-void Reserva::ComandoAnim() const {
+string Reserva::ComandoAnim() const {
+    ostringstream os;
     if(animais.empty())
-        cout << "Sem animais!\n";
+        os << "Sem animais!\n";
     else {
         auto it = this->animais.begin();
         while (it != this->animais.end()) {
-            cout << "\nId: " << (*it)->getId() << " Especie: " << (*it)->getEspecie() << " Saude: " << (*it)->getSaude();
+            os << "Id: " << (*it)->getId() << " Especie: " << (*it)->getEspecie() << " Saude: " << (*it)->getSaude() << "\n";
             ++it;
         }
     }
+    return os.str();
 }
 
 char Reserva::especieAnimal(int nl, int nc) const{
@@ -374,7 +399,6 @@ char Reserva::tipoAlimento(int nl, int nc) const {
     auto it = this->alimentos.begin();
     while(it != this->alimentos.end()){
         if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
-
             return (*it)->getTipo();
         }
         else
@@ -388,128 +412,215 @@ void Reserva::movimentaAnimais() {
         auto it = this->animais.begin();
         while (it != this->animais.end()) {
             if ((*it)->getEspecie() == 'c') {
-
+                int distancia = 0;
                 int direcao = rand() % 4+1;
-                int distancia = rand() % 2+1;
+
+                if((*it)->getFome() < 10)
+                    distancia = rand() % 2+1;
+                else if((*it)->getFome() > 20)
+                    distancia = rand() % 4+1;
+                else
+                    distancia = rand() % 3+1;
+
+                for(int a = 1; a < 5; a++){
+                    if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha()-a, (*it)->getPosColuna(), 10)){
+                        direcao = 3; //Ia para cima agora vai para baixo
+                    } else if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha()+a, (*it)->getPosColuna(), 10)){
+                        direcao = 1; //Ia para baixo agora vai para cima
+                    } else if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha(), (*it)->getPosColuna()-a, 10)){
+                        direcao = 2; //Ia para a esquerda agora vai para a direita
+                    } else if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha(), (*it)->getPosColuna()+a, 10)){
+                        direcao = 4; //Ia para a direita agora vai para a esquerda
+                    }
+                }
+
                 switch(direcao) {
                     case 1:
                         //Anda para cima
-                        if((*it)->getPosLinha() == 1){
-                            (*it)->setPoslinha(NL-distancia+1);
-                        } else if((*it)->getPosLinha() - distancia < 1){
-                            (*it)->setPoslinha(NL);
+                        if((*it)->getPosLinha() - distancia < 1){
+                            (*it)->setPoslinha(NL + (*it)->getPosLinha() - distancia);
                         } else {
                             (*it)->setPoslinha((*it)->getPosLinha()-distancia);
                         }
                         break;
                     case 2:
                         //Anda para a direita
-                        if((*it)->getPosColuna() == NC){
-                            (*it)->setPoscoluna(distancia);
-                        } else if((*it)->getPosColuna()+distancia > NC){
-                            (*it)->setPoscoluna(1);
+                        if((*it)->getPosColuna()+distancia > NC){
+                            (*it)->setPoscoluna((*it)->getPosColuna() + distancia - NC);
                         } else{
                             (*it)->setPoscoluna((*it)->getPosColuna()+distancia);
                         }
                         break;
                     case 3:
                         //Anda para baixo
-                        if((*it)->getPosLinha() == NL){
-                            (*it)->setPoslinha(distancia);
-                        } else if((*it)->getPosLinha() + distancia > NL){
-                            (*it)->setPoslinha(1);
+                        if((*it)->getPosLinha() + distancia > NL){
+                            (*it)->setPoslinha((*it)->getPosLinha() + distancia - NL);
                         } else {
                             (*it)->setPoslinha((*it)->getPosLinha()+distancia);
                         }
                         break;
                     case 4:
                         //Anda para a esquerda
-                        if((*it)->getPosColuna() == 1){
-                            (*it)->setPoscoluna(NC-distancia+1);
-                        } else if((*it)->getPosColuna()-distancia < 1){
-                            (*it)->setPoscoluna(NC);
+                        if((*it)->getPosColuna()-distancia < 1){
+                            (*it)->setPoscoluna(NC + (*it)->getPosColuna() - distancia);
                         } else{
                             (*it)->setPoscoluna((*it)->getPosColuna()-distancia);
                         }
                         break;
                 }
+
+                auto i = alimentos.begin();
+                while (i < alimentos.end()){
+                    if((*i)->getPosLinha() == (*it)->getPosLinha() && (*i)->getPosColuna() == (*it)->getPosColuna()){
+                        string cheiro;
+                        istringstream iss((*i)->getCheiro());
+                        while (!iss.eof()){
+                            cheiro.clear();
+                            iss >> cheiro;
+                            if(cheiro == "verdura"){
+                                alimentaAnimal((*it)->getId(),(*i)->getNutricao(),(*i)->getToxicidade(), (*i)->getTipo());
+                                alimentos.erase(i);
+                            }
+                        }
+                    }
+                    ++i;
+                }
+
                 ++it;
             } else if ((*it)->getEspecie() == 'o') {
 
                 int direcao = rand() % 4+1;
-                int distancia = 1;
+                int distancia = 0;
+                if((*it)->getFome() <= 15)
+                    distancia = 1;
+                else
+                    distancia = rand() % 2+1;
+
+                for(int a = 1; a < 4; a++){
+                    if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha()-a, (*it)->getPosColuna(), 15)){
+                        direcao = 3; //Ia para cima agora vai para baixo
+                    } else if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha()+a, (*it)->getPosColuna(), 15)){
+                        direcao = 1; //Ia para baixo agora vai para cima
+                    } else if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha(), (*it)->getPosColuna()-a, 15)){
+                        direcao = 2; //Ia para a esquerda agora vai para a direita
+                    } else if(EncontraAnimalPesado((*it)->getId(),(*it)->getPosLinha(), (*it)->getPosColuna()+a, 15)){
+                        direcao = 4; //Ia para a direita agora vai para a esquerda
+                    }
+                }
+
                 switch(direcao) {
                     case 1:
                         //Anda para cima
-                        if((*it)->getPosLinha() == 1){
-                            (*it)->setPoslinha(NL);
-                        } else{
+                        if((*it)->getPosLinha() - distancia < 1){
+                            (*it)->setPoslinha(NL + (*it)->getPosLinha() - distancia);
+                        } else {
                             (*it)->setPoslinha((*it)->getPosLinha()-distancia);
                         }
                         break;
                     case 2:
                         //Anda para a direita
-                        if((*it)->getPosColuna() == NC){
-                            (*it)->setPoscoluna(distancia);
+                        if((*it)->getPosColuna()+distancia > NC){
+                            (*it)->setPoscoluna((*it)->getPosColuna() + distancia - NC);
                         } else{
                             (*it)->setPoscoluna((*it)->getPosColuna()+distancia);
                         }
                         break;
                     case 3:
                         //Anda para baixo
-                        if((*it)->getPosLinha() == NL){
-                            (*it)->setPoslinha(distancia);
-                        } else{
+                        if((*it)->getPosLinha() + distancia > NL){
+                            (*it)->setPoslinha((*it)->getPosLinha() + distancia - NL);
+                        } else {
                             (*it)->setPoslinha((*it)->getPosLinha()+distancia);
                         }
                         break;
                     case 4:
                         //Anda para a esquerda
-                        if((*it)->getPosColuna() == 1){
-                            (*it)->setPoscoluna(NC);
+                        if((*it)->getPosColuna()-distancia < 1){
+                            (*it)->setPoscoluna(NC + (*it)->getPosColuna() - distancia);
                         } else{
                             (*it)->setPoscoluna((*it)->getPosColuna()-distancia);
                         }
                         break;
                 }
+
+                auto i = alimentos.begin();
+                while (i < alimentos.end()){
+                    if((*i)->getPosLinha() == (*it)->getPosLinha() && (*i)->getPosColuna() == (*it)->getPosColuna()){
+                        string cheiro;
+                        istringstream iss((*i)->getCheiro());
+                        while (!iss.eof()){
+                            cheiro.clear();
+                            iss >> cheiro;
+                            if(cheiro == "erva"){
+                                alimentaAnimal((*it)->getId(),(*i)->getNutricao(),(*i)->getToxicidade(), (*i)->getTipo());
+                                alimentos.erase(i);
+                            }
+                        }
+                    }
+                    ++i;
+                }
+
                 ++it;
             } else if ((*it)->getEspecie() == 'l') {
 
                 int direcao = rand() % 4+1;
                 int distancia = 1;
+
+                if((*it)->getFome() <= 15)
+                    distancia = 1;
+                else
+                    distancia = 2;
+
                 switch(direcao) {
                     case 1:
                         //Anda para cima
-                        if((*it)->getPosLinha() == 1){
-                            (*it)->setPoslinha(NL);
-                        } else{
+                        if((*it)->getPosLinha() - distancia < 1){
+                            (*it)->setPoslinha(NL + (*it)->getPosLinha() - distancia);
+                        } else {
                             (*it)->setPoslinha((*it)->getPosLinha()-distancia);
                         }
                         break;
                     case 2:
                         //Anda para a direita
-                        if((*it)->getPosColuna() == NC){
-                            (*it)->setPoscoluna(distancia);
+                        if((*it)->getPosColuna()+distancia > NC){
+                            (*it)->setPoscoluna((*it)->getPosColuna() + distancia - NC);
                         } else{
                             (*it)->setPoscoluna((*it)->getPosColuna()+distancia);
                         }
                         break;
                     case 3:
                         //Anda para baixo
-                        if((*it)->getPosLinha() == NL){
-                            (*it)->setPoslinha(distancia);
-                        } else{
+                        if((*it)->getPosLinha() + distancia > NL){
+                            (*it)->setPoslinha((*it)->getPosLinha() + distancia - NL);
+                        } else {
                             (*it)->setPoslinha((*it)->getPosLinha()+distancia);
                         }
                         break;
                     case 4:
                         //Anda para a esquerda
-                        if((*it)->getPosColuna() == 1){
-                            (*it)->setPoscoluna(NC);
+                        if((*it)->getPosColuna()-distancia < 1){
+                            (*it)->setPoscoluna(NC + (*it)->getPosColuna() - distancia);
                         } else{
                             (*it)->setPoscoluna((*it)->getPosColuna()-distancia);
                         }
                         break;
+                }
+
+                auto i = alimentos.begin();
+                while (i < alimentos.end()){
+                    if((*i)->getPosLinha() == (*it)->getPosLinha() && (*i)->getPosColuna() == (*it)->getPosColuna()){
+                        string cheiro;
+                        istringstream iss((*i)->getCheiro());
+                        while (!iss.eof()){
+                            cheiro.clear();
+                            iss >> cheiro;
+                            if(cheiro == "carne"){
+                                alimentaAnimal((*it)->getId(),(*i)->getNutricao(),(*i)->getToxicidade(), (*i)->getTipo());
+                                alimentos.erase(i);
+                            }
+                        }
+                    }
+                    ++i;
                 }
 
                 ++it;
@@ -589,6 +700,23 @@ void Reserva::movimentaAnimais() {
                         }
                         break;
                 }
+
+                auto i = alimentos.begin();
+                while (i < alimentos.end()){
+                    if((*i)->getPosLinha() == (*it)->getPosLinha() && (*i)->getPosColuna() == (*it)->getPosColuna()){
+                        string cheiro;
+                        istringstream iss((*i)->getCheiro());
+                        while (!iss.eof()){
+                            cheiro.clear();
+                            iss >> cheiro;
+                            if(cheiro == "fruta"){
+                                alimentaAnimal((*it)->getId(),(*i)->getNutricao(),(*i)->getToxicidade(), (*i)->getTipo());
+                                alimentos.erase(i);
+                            }
+                        }
+                    }
+                    ++i;
+                }
                 ++it;
             }
         }
@@ -665,6 +793,8 @@ void Reserva::AumentaInstantesDecorridosAnimal() {
     auto it = this->animais.begin();
     while(it != this->animais.end()){
         (*it)->aumentaInstantesDecorridos();
+        if((*it)->getEspecie()=='g' && (*it)->getInstantesDecorridos() == 20)
+            (*it)->setMassa(20);
         ++it;
     }
 }
@@ -747,12 +877,31 @@ bool Reserva::verificaOcupacaoEspaco(int nl, int nc) {
     while(it != this->animais.end()){
         if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
             conta++;
+            ++it;
         }
         else
             ++it;
     }
 
     if(conta >= 2)
+        return false;
+    else
+        return true;
+}
+
+bool Reserva::verificaOcupacaoEspacoAlimento(int nl, int nc) {
+    int conta = 0;
+    auto it = this->alimentos.begin();
+    while(it != this->alimentos.end()){
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            conta++;
+            ++it;
+        }
+        else
+            ++it;
+    }
+
+    if(conta >= 1)
         return false;
     else
         return true;
@@ -958,7 +1107,7 @@ void Reserva::FazNascer() {
                     }
             }
         }else if(animais[i]->getEspecie() == 'l'){
-            if(animais[i]->getInstantesDecorridos() == 14){
+            if(animais[i]->getInstantesDecorridos() == 25){
                 int direcao = rand() % 4+1;
                 int distancia = rand() % 15+1;
                 switch(direcao) {
@@ -1244,4 +1393,178 @@ void Reserva::FazNascer() {
             }
         }
     }
+
+    std::vector<Alimento*>::size_type sizeAlimento = alimentos.size();
+    for (std::vector<Alimento*>::size_type i = 0; i < sizeAlimento; ++i){
+        if(alimentos[i]->getTipo() == 'r'){
+            if(alimentos[i]->getDuracao() == getVRelva()/4){
+                int direcao = rand() % 4+1;
+                int distancia = rand() % 5+4;
+                switch (direcao) {
+                    case 1:
+                        //Anda para cima
+                        if(alimentos[i]->getPosLinha() == 1){
+                            if(verificaOcupacaoEspacoAlimento(NL - distancia + 1,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), NL - distancia + 1,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosLinha() - distancia < 1){
+                            if(verificaOcupacaoEspacoAlimento(NL-(alimentos[i]->getPosLinha() - distancia),alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), NL-(alimentos[i]->getPosLinha() - distancia),alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else {
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha()-distancia,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha()-distancia,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                    case 2:
+                        //Anda para a direita
+                        if(alimentos[i]->getPosColuna() == NC){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosColuna()+distancia > NC){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),distancia-(NC-alimentos[i]->getPosColuna()))){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),distancia-(NC-alimentos[i]->getPosColuna()), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else{
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()+distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()+distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                    case 3:
+                        //Anda para baixo
+                        if(alimentos[i]->getPosLinha() == NL){
+                            if(verificaOcupacaoEspacoAlimento(distancia,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), distancia,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosLinha() + distancia > NL){
+                            if(verificaOcupacaoEspacoAlimento(distancia-(NL-alimentos[i]->getPosLinha()),alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), distancia-(NL-alimentos[i]->getPosLinha()),alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        } else {
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha()+distancia,alimentos[i]->getPosColuna())){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha()+distancia,alimentos[i]->getPosColuna(), newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                    case 4:
+                        //Anda para a esquerda
+                        if(alimentos[i]->getPosColuna() == 1){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),NC-distancia+1)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),NC-distancia+1, newId());
+                                AddAlimento(tmp);
+                            }
+                        } else if(alimentos[i]->getPosColuna()-distancia < 1){
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),NC+alimentos[i]->getPosColuna()-distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),NC+alimentos[i]->getPosColuna()-distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        } else{
+                            if(verificaOcupacaoEspacoAlimento(alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()-distancia)){
+                                Alimento * tmp = new Relva('r', 3, 0, getVRelva(), alimentos[i]->getPosLinha(),alimentos[i]->getPosColuna()-distancia, newId());
+                                AddAlimento(tmp);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+    }
 }
+
+int Reserva::TotalAnimais() {
+    int conta = animais.size();
+    return conta;
+}
+
+int Reserva::TotalAlimentos() {
+    int conta = alimentos.size();
+    return conta;
+}
+
+int Reserva::numElementosPorPosicao(int nl, int nc) {
+    int contador = 0;
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if((*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            contador++;
+            ++it;
+        }
+        else
+            ++it;
+    }
+
+    auto i = this->alimentos.begin();
+    while(i != this->alimentos.end()){
+        if((*i)->getPosLinha() == nl && (*i)->getPosColuna() == nc){
+            contador++;
+            ++i;
+        }
+        else
+            ++i;
+    }
+
+    return contador;
+}
+
+string Reserva::CheiroDoAlimento(int nl, int nc) {
+    auto i = this->alimentos.begin();
+    while(i != this->alimentos.end()){
+        if((*i)->getPosLinha() == nl && (*i)->getPosColuna() == nc){
+            return (*i)->getCheiro();
+        }
+        else
+            ++i;
+    }
+    return nullptr;
+}
+
+bool Reserva::EncontraAnimalPesado(int num, int nl, int nc, int m) const { //id, linha, coluna, massa
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if((*it)->getId() != num && (*it)->getPosLinha() == nl && (*it)->getPosColuna() == nc){
+            if((*it)->getMassa() > m){
+                return true;
+            }
+            ++it;
+        }
+        else
+            ++it;
+    }
+    return false;
+}
+
+/*bool Reserva::animalSegueAlimento(int num) {
+    auto it = this->animais.begin();
+    while(it != this->animais.end()){
+        if((*it)->getId() == num){
+            for(int a = 1; a < 5; a++){
+                if(CheiroDoAlimento((*it)->getPosLinha()-a, (*it)->getPosColuna()) == "verdura"){
+                    (*it)->setPoslinha((*it)->getPosLinha()-a);
+                }else if(CheiroDoAlimento((*it)->getPosLinha(), (*it)->getPosColuna()+a) == "verdura"){
+                    (*it)->setPoscoluna((*it)->getPosColuna()+a);
+                }else if(CheiroDoAlimento((*it)->getPosLinha()+a, (*it)->getPosColuna()) == "verdura"){
+                    (*it)->setPoslinha((*it)->getPosLinha()+a);
+                }else if(CheiroDoAlimento((*it)->getPosLinha(), (*it)->getPosColuna()-a) == "verdura"){
+                    (*it)->setPoscoluna((*it)->getPosColuna()-a);
+                }
+            }
+            return true;
+        }
+        else
+            ++it;
+    }
+
+    return false;
+}*/

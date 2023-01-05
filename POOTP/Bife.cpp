@@ -12,3 +12,9 @@ void Bife::AtualizaNutriToxi() {
     if(valornutritivo > 0)
         valornutritivo--;
 }
+
+string Bife::getCheiro() const {
+    ostringstream os;
+    os << cheiro[0] << " " << cheiro[1];
+    return os.str();
+}

@@ -5,9 +5,9 @@
 
 class Ovelha : public Animal{
 public:
-    Ovelha(int massa, int fome, int saude, char especie, int poslinha, int poscoluna, int idAnimal, int vidainstantes);
-    ~Ovelha() override = default;
-    void aumentaFome() override;
+    Ovelha(int massa, int fome, int saude, char especie, int poslinha, int poscoluna, int idAnimal, int vidainstantes); //Construtor
+    ~Ovelha() override = default; //Destrutor
+    void aumentaFome() override; //Função que vai aumentar a fome do animal com o passar de cada instante
 };
 
 

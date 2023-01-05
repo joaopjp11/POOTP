@@ -5,9 +5,9 @@
 
 class Cavalo : public Animal{
 public:
-    Cavalo(int massa, int fome, int saude, char especie, int poslinha, int poscoluna, int idAnimal, int vidainstantes);
-    ~Cavalo() override = default;
-    void aumentaFome() override;
+    Cavalo(int massa, int fome, int saude, char especie, int poslinha, int poscoluna, int idAnimal, int vidainstantes); //Construtor
+    ~Cavalo() override = default; //Destrutor
+    void aumentaFome() override; //Função que vai aumentar a fome do animal com o passar de cada instante
 };
 
 #endif //POOTP_CBP_CAVALO_H
