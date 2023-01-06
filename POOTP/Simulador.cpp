@@ -26,7 +26,7 @@ void Simulador::comecaSimulador() {
     Window Detalhes = Window(65, 0, 50, 24, true);
     Window StatusComandos = Window(65, 24, 50, 6, true);
 
-    mostraReservaInicial(jogo, ViewReserva);
+    mostraReserva(jogo, ViewReserva);
 
 
     do{
@@ -45,33 +45,6 @@ void Simulador::comecaSimulador() {
     }while(comando != "exit");
 }
 
-void Simulador::mostraReservaInicial(Jogo &jogo, Window &ViewReserva) {
-    int linhas = jogo.getReserva()->getLinhas();
-    int colunas = jogo.getReserva()->getColunas();
-    int i = 0;
-    int j = 0;
-
-    //Dimensões da ViewReserva - 22 Linhas x 58 Colunas
-    /*for(i=0;i<linhas+2;i++){
-        ViewReserva << "|";
-        if(i == 0){
-            for(j=0;j<colunas;j++){
-                ViewReserva << "|";
-            }
-        }
-        else if(i == linhas+1){
-            for(j=0;j<colunas;j++){
-                ViewReserva << "|";
-            }
-        }
-        else {
-            for(j=1;j<colunas+1;j++){
-                ViewReserva << " ";
-            }
-        }
-        ViewReserva << "|" << '\n';
-    }*/
-}
 
 void Simulador::mostraReserva(Jogo &jogo,Window &ViewReserva) {
     int linhas = jogo.getReserva()->getLinhas();
@@ -79,7 +52,7 @@ void Simulador::mostraReserva(Jogo &jogo,Window &ViewReserva) {
     int i = 0;
     int j = 0;
 
-    //Dimensões da ViewReserva - 22 Linhas x 58 Colunas
+    //Dimensões da ViewReserva = 22 Linhas x 58 Colunas
     for(i=1;i<linhas+1;i++){
             for(j=1;j<colunas+1;j++){
                 if(jogo.getReserva()->numElementosPorPosicao(i,j) > 1){
@@ -91,8 +64,9 @@ void Simulador::mostraReserva(Jogo &jogo,Window &ViewReserva) {
                     ViewReserva << jogo.getReserva()->tipoAlimento(i, j);
 
                 }else if(!jogo.getReserva()->verificaLinhaColunaAnimal(i,j) && !jogo.getReserva()->verificaLinhaColunaAlimento(i,j))
-                    ViewReserva << " ";
+                    ViewReserva << "_";
             }
+            ViewReserva << "\n";
     }
 }
 
@@ -434,8 +408,11 @@ string Simulador::validaComando(Jogo &jogo, Store &jogos, istringstream &recebe,
                     jogo.getReserva()->verificaSaude();
                     jogo.getReserva()->FazNascer();
                     jogo.incrementaInstante(1);
-                    aux--;
+                    ViewReserva.clear();
+                    mostraReserva(jogo, ViewReserva);
                     sleep(pausa);
+                    ViewReserva.clear();
+                    aux--;
                 } while (aux > 0);
                 return "Passa instantes com pausa";
             }

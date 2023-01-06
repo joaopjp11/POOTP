@@ -623,6 +623,23 @@ void Reserva::movimentaAnimais() {
                     ++i;
                 }
 
+                auto it2 = animais.begin();
+                while (it2 < animais.end()){
+                    if((*it2)->getPosLinha() == (*it)->getPosLinha() && (*it2)->getPosColuna() == (*it)->getPosColuna() && (*it2)->getId() != (*it)->getId()){
+                        if((*it2)->getMassa() < (*it)->getMassa()){
+                            mataAnimal((*it2)->getId());
+                        } else{
+                            int morrer = rand() % 2+1;
+                            if(morrer == 1){
+                                mataAnimal((*it)->getId());
+                            } else if(morrer == 2){
+                                mataAnimal((*it2)->getId());
+                            }
+                        }
+                    }
+                    ++it2;
+                }
+
                 ++it;
             } else if ((*it)->getEspecie() == 'g') {
 

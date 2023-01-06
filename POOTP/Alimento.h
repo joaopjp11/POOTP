@@ -31,7 +31,7 @@ protected:
     int toxicidade;
     int duracao;
     int poslinha; //Linha onde se encontra
-    int poscoluna; //Coluna onde se encontra
+    int poscoluna; //Coluna onde se encontra0
     int idAlimento;
 };
 
